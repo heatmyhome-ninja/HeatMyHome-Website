@@ -1,2 +1,2 @@
 # HeatNinja
-https://heatmyhome-ninja.github.io/HeatNinja/
+www.heatmyhome,ninja
