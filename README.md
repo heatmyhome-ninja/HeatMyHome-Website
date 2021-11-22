@@ -1,2 +1,2 @@
 # HeatNinja
-www.heatmyhome,ninja
+www.heatmyhome.ninja
