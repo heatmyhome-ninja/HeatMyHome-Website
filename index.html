@@ -8,7 +8,8 @@
   </head>
   <body>
     <div class="main-page">
-      <h1>Water & Space Heating (WASH) Simulator</h1>
+      <h1>Water & Space Heating Simulator</h1>
+      <p>v0.0.4s</p>
       <div class="input-block">
         <h2>Simulation Parameters</h2>
         <div class="flex-row">
@@ -50,91 +51,64 @@
           <p>TES Max (m<sup>3</sup>)</p>
           <input id="sim-tes-max" type="number" value="0.5" />
         </div>
+        <div class="flex-row">
+          <p>Use Surface Optimisation</p>
+          <input id="sim-surface-optimisation" type="checkbox" checked />
+        </div>
         <button onclick="submitSimulation();">Run Simulation</button>
-      </div>
-
-      <table id="sim-table" class="hide">
-        <tr>
-          <th>Heat Opt</th>
-          <th>Solar Opt</th>
-          <th>PV Size<br />(m<sup>2</sup>)</th>
-          <th>Solar Size<br />(m<sup>2</sup>)</th>
-          <th>TES Vol<br />(m<sup>3</sup>)</th>
-          <th>OPEX<br />(£/yr)</th>
-          <th>CAPEX<br />(£)</th>
-          <th>NPC<br />(£)</th>
-          <th>OPEM<br />(kgCO<sub>2</sub>eq/yr)</th>
-        </tr>
-      </table>
-
-      <textarea readonly id="console-log">Console logs here ...</textarea>
-      <button class="clear-console" onclick="clearConsole();">
-        Clear Console
-      </button>
-
-      <div>
-        <p>Square Root Number</p>
         <div class="flex-row">
-          <input id="sqrtnum" type="number" value="5" />
-          <button onclick="submitSqrtNum();">></button>
+          <p>Runtime (s)</p>
+          <p id="sim-runtime">___</p>
         </div>
       </div>
 
-      <div>
-        <p>Call Class</p>
+      <div id="results" class="hide">
         <div class="flex-row">
-          <input id="callClass" type="number" value="2" />
-          <button onclick="submitCallClass();">></button>
+          <p>Sort By</p>
+          <select name="sortby" id="sortby" onchange="updateSortBy()">
+            <option value="0" selected>None</option>
+            <option value="1">OPEX</option>
+            <option value="2">CAPEX</option>
+            <option value="3">NPC</option>
+            <option value="4">OPEM</option>
+          </select>
         </div>
-      </div>
-
-      <div>
-        <p>Run Speed Test JS</p>
         <div class="flex-row">
-          <input id="speedNumJS" type="number" value="3" />
-          <button onclick="speedTest();">></button>
+          <p>Group By</p>
+          <select name="groupby" id="groupby" onchange="updateGroupBy()">
+            <option value="0" selected>None</option>
+            <option value="1">Heat Option</option>
+            <option value="2">Solar Option</option>
+          </select>
         </div>
-      </div>
-
-      <div>
-        <p>Run Speed Test WASM</p>
-        <div class="flex-row">
-          <input id="speedNum" type="number" value="3" />
-          <button onclick="speedTestWasm();">></button>
+        <div class="flex-row hide" id="collapse-groups">
+          <p>Collapse Groups</p>
+          <input
+            id="collapse-groups-input"
+            type="checkbox"
+            checked
+            onchange="updateCollapseGroups()"
+          />
         </div>
-      </div>
-
-      <div>
-        <p>Enter Address</p>
-        <div class="flex-row">
-          <input id="latlon" type="text" value="lat_50.5_lon_-1.5" />
-          <button onclick="submitLatLon();">></button>
-        </div>
-      </div>
-
-      <div>
-        <p>Enter PostCode</p>
-        <div class="flex-row">
-          <input id="postcode" type="text" value="CV47AL" />
-          <button onclick="submitPostcode();">></button>
-        </div>
-      </div>
-
-      <div class="flex-row">
-        <p>Print Text File</p>
-        <button onclick="submitPrintTxt();">></button>
-      </div>
-
-      <div class="flex-row">
-        <p>Return Vector</p>
-        <button onclick="submitReturnVector();">></button>
-      </div>
-
-      <div class="flex-row">
-        <p>Test Simulation</p>
-        <button onclick="submitSimTest();">></button>
+        <table id="sim-table">
+          <tr>
+            <th>Heat Opt</th>
+            <th>Solar Opt</th>
+            <th>PV Size<br />(m<sup>2</sup>)</th>
+            <th>
+              Solar Thermal<br />
+              Size (m<sup>2</sup>)
+            </th>
+            <th>TES Vol<br />(m<sup>3</sup>)</th>
+            <th>OPEX<br />(£/yr)</th>
+            <th>CAPEX<br />(£)</th>
+            <th>NPC<br />(£)</th>
+            <th>OPEM<br />(kgCO<sub>2</sub>eq/yr)</th>
+          </tr>
+        </table>
       </div>
     </div>
+    <div id="live-tester"></div>
     <script src="index.js"></script>
   </body>
 </html>

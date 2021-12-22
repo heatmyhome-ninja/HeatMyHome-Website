@@ -24,23 +24,6 @@ body {
 
 h1 {
   margin: 1.5rem 1rem 0rem 1rem;
-  animation-name: example;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes example {
-  from {
-    color: white;
-  }
-
-  50% {
-    color: var(--light-clr);
-  }
-
-  to {
-    color: white;
-  }
 }
 
 input {
@@ -174,7 +157,7 @@ table {
 }
 
 th {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: normal;
   color: var(--light-clr);
   writing-mode: vertical-rl;
@@ -185,14 +168,50 @@ th {
 }
 
 th > * {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: normal;
   color: var(--light-clr);
   background-color: var(--med-clr);
 }
 
 td {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   padding: 0.1rem 0.2rem;
   text-align: center;
+}
+
+#sim-runtime {
+  border: 1px solid var(--light-clr);
+  background-color: var(--med-clr);
+  color: var(--light-clr);
+  padding: 0.4rem 0rem;
+  margin: 0rem 0.5rem;
+  width: 7rem;
+  font-size: 0.9rem;
+}
+
+#live-tester {
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  width: 1rem;
+  height: 0.5rem;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  background-color: white;
+}
+
+@keyframes example {
+from {
+  transform: rotate(0deg);
+}
+
+50% {
+  transform: rotate(180deg);
+}
+
+to {
+  transform: rotate(360deg);
 }
