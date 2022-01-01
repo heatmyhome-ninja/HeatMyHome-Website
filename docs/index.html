@@ -1,0 +1,142 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="icon" href="icon.ico" /> -->
+    <title>WASH Simulator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-page">
+      <h1>Water & Space Heating Simulator</h1>
+      <p>v0.0.14</p>
+      <div class="input-block">
+        <h2>Simulation Parameters</h2>
+        <div class="flex-row">
+          <p>Postcode</p>
+          <input
+            id="sim-postcode"
+            type="text"
+            value=""
+            onchange="postcode_onchange_callback();"
+          />
+        </div>
+        <div class="flex-row">
+          <p>Latitude</p>
+          <input id="sim-latitude" type="number" value="" />
+        </div>
+        <div class="flex-row">
+          <p>Longitude</p>
+          <input id="sim-longitude" type="number" value="" />
+        </div>
+        <div class="flex-row">
+          <p>Occupants</p>
+          <input id="sim-occupants" type="number" value="" />
+        </div>
+        <div class="flex-row">
+          <p>Thermostat Temp</p>
+          <input id="sim-temperature" type="number" value="" />
+        </div>
+        <div class="flex-row">
+          <p>Address</p>
+          <select id="sim-addresses" onchange="get_epc_data()"></select>
+        </div>
+        <div class="flex-row">
+          <a
+            href="https://find-energy-certificate.digital.communities.gov.uk/find-a-certificate/search-by-postcode"
+            >EPC Space Heating</a
+          >
+          <input id="sim-space-heating" type="number" value="" />
+        </div>
+        <div class="flex-row">
+          <a
+            href="https://find-energy-certificate.digital.communities.gov.uk/find-a-certificate/search-by-postcode"
+            >Floor Area (m<sup>2</sup>)</a
+          >
+          <input id="sim-floor-area" type="number" value="" />
+        </div>
+        <div class="flex-row">
+          <p>TES Max (m<sup>3</sup>)</p>
+          <input id="sim-tes-max" type="number" value="" />
+        </div>
+        <div class="flex-row">
+          <p>Use Surface Optimisation</p>
+          <input id="sim-surface-optimisation" type="checkbox" checked />
+        </div>
+        <button id="sim-submit" onclick="submit_simulation();">
+          Run Simulation
+        </button>
+        <div class="flex-row">
+          <p>Runtime (s)</p>
+          <p id="sim-runtime">___</p>
+        </div>
+        <button onclick="generate_url_with_parameters();">
+          Save Parameters
+        </button>
+      </div>
+
+      <div id="results" class="hide">
+        <button onclick="clipboard_simulation_output();">
+          Copy Results to Clipboard
+        </button>
+        <a id="download-link" href="test">Download</a>
+        <div class="flex-row">
+          <p>Lifetime (yrs)</p>
+          <input
+            id="sim-lifetime"
+            type="number"
+            value="20"
+            onchange="lifetime_callback();"
+          />
+        </div>
+        <div class="flex-row">
+          <p>Sort By</p>
+          <select name="sortby" id="sortby" onchange="sortby_callback()">
+            <option value="0" selected>None</option>
+            <option value="1">OPEX</option>
+            <option value="2">CAPEX</option>
+            <option value="3">NPC</option>
+            <option value="4">OPEM</option>
+          </select>
+        </div>
+        <div class="flex-row" id="group-systems">
+          <p>Group Heat Options</p>
+          <input
+            id="group-systems-input"
+            type="checkbox"
+            onchange="group_systems_callback()"
+            disabled
+          />
+        </div>
+        <div class="flex-row" id="collapse-groups">
+          <p>Collapse Groups</p>
+          <input
+            id="collapse-groups-input"
+            type="checkbox"
+            onchange="collapse_groups_callback()"
+            disabled
+          />
+        </div>
+        <table id="sim-table">
+          <tr>
+            <th>Heat Tech</th>
+            <th>Solar / H<sub>2</sub> <br />Tech</th>
+            <th>PV Size<br />(m<sup>2</sup>)</th>
+            <th>
+              Solar Thermal<br />
+              Size (m<sup>2</sup>)
+            </th>
+            <th>TES Vol<br />(m<sup>3</sup>)</th>
+            <th>OPEX<br />(£/yr)</th>
+            <th>CAPEX<br />(£)</th>
+            <th>NPC<br />(£)</th>
+            <th>OPEM<br />(kgCO<sub>2</sub>eq/yr)</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="live-tester"></div>
+    <script src="index.js"></script>
+  </body>
+</html>
