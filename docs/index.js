@@ -81,7 +81,7 @@ const discount_rate = 1.035; // 3.5% standard for UK HMRC
 let npc_years = 20;
 let cumulative_discount_rate = calculate_cumulative_discount_rate(discount_rate, npc_years);
 
-//const epc_api_url = 'http://heatmyhomeninja-env.eba-w2gamium.us-east-2.elasticbeanstalk.com/';
+// const epc_api_url = 'http://heatmyhomeninja-env.eba-w2gamium.us-east-2.elasticbeanstalk.com/';
 //const epc_api_url = 'http://localhost:3000/';
 const epc_api_url = 'https://customapi.heatmyhome.ninja/'
 
@@ -102,19 +102,24 @@ if (window.Worker) {
                 load_default_parameters();
                 break;
             case 'simulation complete':
-                // log and display simulation runtime
-                let end = performance.now();
-                let runtime = ((end - msg.data[2]) / 1000.0).toPrecision(3);
-                console.log(`C++ Simulation Runtime: ${runtime}s`);
-                document.getElementById('sim-runtime').innerHTML = runtime;
+                if (msg.data[1] == "") {
+                    document.getElementById('sim-runtime').innerHTML = "FAILED";
+                    document.getElementById('sim-submit').disabled = false;
+                } else {
+                    // log and display simulation runtime
+                    let end = performance.now();
+                    let runtime = ((end - msg.data[2]) / 1000.0).toPrecision(3);
+                    console.log(`C++ Simulation Runtime: ${runtime}s`);
+                    document.getElementById('sim-runtime').innerHTML = runtime;
 
-                // save, log and render simulation output
-                sim_output = JSON.parse(msg.data[1]);
-                document.getElementById('results').classList.remove("hide");
-                document.getElementById('sim-submit').disabled = false;
-                console.log(sim_output);
-                render_simulation_table();
-                create_simulation_output_file_download();
+                    // save, log and render simulation output
+                    sim_output = JSON.parse(msg.data[1]);
+                    document.getElementById('results').classList.remove("hide");
+                    document.getElementById('sim-submit').disabled = false;
+                    console.log(sim_output);
+                    render_simulation_table();
+                    create_simulation_output_file_download();
+                }
                 break;
             default:
                 console.warn('Message from worker is not linked to any event: ', msg.data);
