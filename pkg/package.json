@@ -1,0 +1,11 @@
+{
+  "name": "rust_simulator",
+  "version": "0.1.0",
+  "files": [
+    "rust_simulator_bg.wasm",
+    "rust_simulator.js",
+    "rust_simulator.d.ts"
+  ],
+  "main": "rust_simulator.js",
+  "types": "rust_simulator.d.ts"
+}
