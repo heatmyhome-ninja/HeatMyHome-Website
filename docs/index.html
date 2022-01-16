@@ -10,7 +10,7 @@
   <body>
     <div class="main-page">
       <h1>Water & Space Heating Simulator</h1>
-      <p>v0.0.16</p>
+      <p>v0.0.19</p>
       <div class="input-block">
         <h2>Simulation Parameters</h2>
         <div class="flex-row">
@@ -63,6 +63,10 @@
         <div class="flex-row">
           <p>Use Surface Optimisation</p>
           <input id="sim-surface-optimisation" type="checkbox" checked />
+        </div>
+        <div class="flex-row">
+          <p>Use Server</p>
+          <input id="sim-submit-server" type="checkbox" checked />
         </div>
         <button id="sim-submit" onclick="submit_simulation();">
           Run Simulation
