@@ -234,3 +234,12 @@ The structure of the website pages are outlined below:
 - Simulate
 
 # API / Server
+
+The server is split into two major parts:
+1. For fetching EPC certificates.
+2. For computing the heating simulations.
+
+The API is currently unavailable for public use due to limited compute hours. 
+However the code is publicly available if you wish to view it or host the server yourself.
+
+For further information please see the API specific [repository](https://github.com/heatmyhome-ninja/epc-api). 
