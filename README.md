@@ -11,8 +11,10 @@ www.heatmyhome.ninja is a web tool to allow consumers to simulate their home's h
         - [Tariff options](#tariff-options)
     - [Hydrogen Sources](#hydrogen-sources)
 - [Performance Metrics](#performance-metrics)
+- [Input Form](#input-form)
+    - [Model Inputs](#model-inputs)
+    - [Additional Options](#additional-options)
 - [Core Simulation Stages](#core-simulation-stages)
-    - [Inputs](#inputs)
     - [Estimating Thermal Transmittance](#estimating-thermal-transmittance)
     - [Estimating Space, Water and Total Heating Demand](#estimating-space-water-and-total-heating-demand)
     - [Applying Demand to Non-Electrified Heating Technologies](#applying-demand-to-non-electrified-heating-technologies)
@@ -21,7 +23,7 @@ www.heatmyhome.ninja is a web tool to allow consumers to simulate their home's h
 - [The Code](#the-code)
     - [Native Code](#native-code)
     - [Website UI](#website-ui)
-    - [API Server](#api-server)
+    - [API Server](#api--server)
 
 # Technologies Simulated
 
@@ -60,9 +62,9 @@ PV and ET, and PV and FP are also simulated in combination.
 The solar ancillaries are sized from 2m<sup>2</sup> upto 1/4 the inputted floor area of 
 the property (assume half the roof area), in 2m<sup>2</sup> increments.
 
-#### Thermal Energy Storage (TES)
+#### Thermal Energy Storage
 
-Water tanks are the only thermal energy storage technology currently simulated. The minimum
+Water tanks are the only thermal energy storage (TES) technology currently simulated. The minimum
 water tank volume is 0.1m<sup>3</sup> with a maximum of 3m<sup>3</sup>, and is simulated in 
 0.1m<sup>3</sup> increments.
 
@@ -103,10 +105,9 @@ The simulator calaculates the following metrics for each of the systems modeled:
 Additionally for the electrified heating technologies the solar ancillery type and size,
 along with TES size that achieves the lowest lifetime cost is outputted.
 
-# Core Simulation Stages
+# Input Form
 
-## Inputs
-
+## Model Inputs
 The model requires six inputs from the user, being the:
 ```
 1. Dwelling’s postcode
@@ -117,6 +118,15 @@ The model requires six inputs from the user, being the:
 6. Maximum TES volume. 
 ```
 From the postcode, the longitude and latitude of the home can be determined, which are rounded to the nearest half a degree. The rounded position is used to load the hourly outside temperature and solar radiation datasets for the location. While the user may not know their home’s floor area and yearly space heating energy consumption, this information can usually be found on their Energy Performance Certificate (EPC), a legal requirement for any building sold, let or constructed in the UK since 2007. As the simulator only outputs the optimal TES size for a given system an upper TES size limit is required as input from the user to ensure the model does not optimise for a TES size that could not feasibly fit into the user’s home.
+
+## Additional Options
+In addition to the inputs required by the model, users can also select:
+1. Where the simualtion is computed, either server-side using Rust (default), client-side using Rust or clinet-side using C++.
+2. If the simulation is run client-side you can choose to turn off optimisation (a global optmisation algorithm)
+
+You can choose to save a completed, valid input form as a URL for sharing or later use. You can also download results and reupload the file to reload the results as well as the inputs for those results.
+
+# Core Simulation Stages
 
 ## Estimating Thermal Transmittance
 
@@ -141,7 +151,7 @@ The total demand is then used to calculate the operational costs and emissions o
 hydrogen, biomass and gas heating systems, by multiplying the energy demand with operating 
 costs and emissions per unit energy respectively, whilst adjusting for system efficiencies. 
 
-### Applying Demand to Non-Electrified Heating Technologies
+### Applying Demand to Electrified Heating Technologies
 As for the electrified heating technologies, the model is more complex, being simulated 
 for a range of solar thermal and photovoltaic ancillary technology sizes and combinations,
 TES sizes and tariffs. For each hour over a year, the following steps occur.
