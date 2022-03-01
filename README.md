@@ -18,6 +18,11 @@ www.heatmyhome.ninja is a web tool to allow consumers to simulate their home's h
     - [Applying Demand to Non-Electrified Heating Technologies](applying-demand-to-non-electrified-heating-technologies)
     - [Applying Demand to Electrified Heating Technologies](applying-demand-to-electrified-heating-technologies)
 - [Computational Complexity](computational-complexity)
+- [The Code](the-code)
+    - [Native Code](native-code)
+    - [Website UI](website-ui)
+    - [API Server](api-server)
+
 # Technologies Simulated
 
 ### Primary Heaters
@@ -78,13 +83,14 @@ Therefore expect current prices to vary from those estimated by the model.**
 ### Hydrogen Sources
 For the hydrogen technologies (boiler and fuel cell) they are simulated using hydrogen from
 three different sources:
-```
-1. Grey: Hydrogen produced from steam methane reforming.
-2. Blue: Hydrogen produced from steam methane reforming, but with the addition of Carbon 
+
+**Grey**: Hydrogen produced from steam methane reforming.
+
+**Blue**: Hydrogen produced from steam methane reforming, but with the addition of Carbon 
 Capture and Storage (CCS).
-3. Green: Hydrogen produced from the electrolysis of water, with the electroylsis powered 
+
+**Green**: Hydrogen produced from the electrolysis of water, with the electroylsis powered 
 using grid electricity.
-```
 
 # Performance Metrics
 The simulator calaculates the following metrics for each of the systems modeled:
@@ -139,12 +145,18 @@ costs and emissions per unit energy respectively, whilst adjusting for system ef
 As for the electrified heating technologies, the model is more complex, being simulated 
 for a range of solar thermal and photovoltaic ancillary technology sizes and combinations,
 TES sizes and tariffs. For each hour over a year, the following steps occur.
-```
-1.	Calculate the change in inside temperature due to heat loss to the environment and heat gain from body heat, solar radiation and heat loss from the TES into the living space.
-2.	Update the TES state of charge due to heat loss, solar thermal generation, space and hot water usage, and heat produced from the electrified heating technology, powered either from grid import or solar photovoltaics.
-3.	Calculate operational costs from electricity import for the hour using the selected tariff and operational emissions associated with the solar ancillaries and grid import.
-```
-The optimal solar ancillary size, TES size and tariff is then outputted to the user for each electrified heat technology - solar ancillary combination, where the optimal system is considered that with the lowest lifetime cost. For a full explanation of the parameters and methodology see the original paper [2].
+
+1.	Calculate the change in inside temperature due to heat loss to the environment and 
+heat gain from body heat, solar radiation and heat loss from the TES into the living space.
+2.	Update the TES state of charge due to heat loss, solar thermal generation, space and
+ hot water usage, and heat produced from the electrified heating technology, powered 
+ either from grid import or solar photovoltaics.
+3.	Calculate operational costs from electricity import for the hour using the selected
+ tariff and operational emissions associated with the solar ancillaries and grid import.
+
+The optimal solar ancillary size, TES size and tariff is then outputted to the user for
+each electrified heat technology - solar ancillary combination, where the optimal 
+system is considered that with the lowest lifetime cost.
 
 # Computational Complexity
 
@@ -176,3 +188,49 @@ and tariff option.
 total_hours_simulated = 8670 * 3 * 5 * solar_combinations * tes_combinations
 total_hours_simulated = 130,050 * solar_combinations * tes_combinations
 ```
+
+# The code
+
+## Native Code
+
+The simulator was originally developed in Python, but was migrated first to C++ 
+and then Rust. This was to achieve improved performance and utilisation of WASM. 
+Note while both version should output identical results the Rust version contains 
+an improved global optimisation algorithm (although the C++ version still performs better).
+
+Links to Relevant Source Code:
+- [Native Rust code](./docs)
+- [WASM code compiled from Rust](./docs)
+- [Native C++ code](./docs)
+- [WASM code compiled from C++](./docs)
+
+Please contact Jack Kirby via [GitHub](https://github.com/Jackrekirby) if you wish to
+discuss implementation aspects fo the code.
+
+## Website UI
+
+The website UI was developed with pure HTML, CSS and Javascript. 
+
+[Chart.js](https://www.chartjs.org) was used to create the output graph.
+
+Simulations are by default run on a server using Rust compiled WASM, but one can select 
+to run the simulations client-side with Rust or C++ compiled WASM.
+
+The structure of the website pages are outlined below:
+
+- Home
+- About Us
+    - Our Team
+    - Privacy Policy
+    - Motivation
+- Education
+    - Heating Technologies
+    - Solar Technologies
+    - Why Switch?
+- Documentation
+    - Simulator Inputs
+    - Simulator Outputs
+    - How-It-Works
+- Simulate
+
+# API / Server
