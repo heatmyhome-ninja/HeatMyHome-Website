@@ -21,7 +21,7 @@ www.heatmyhome.ninja is a web tool to allow consumers to simulate their home's h
     - [Applying Demand to Electrified Heating Technologies](#applying-demand-to-electrified-heating-technologies)
 - [Computational Complexity](#computational-complexity)
 - [The Code](#the-code)
-    - [Native Code](#native-code)
+    - [Folder Guide](#folder-guide)
     - [Website UI](#website-ui)
     - [API Server](#api--server)
 
@@ -201,21 +201,33 @@ total_hours_simulated = 130,050 * solar_combinations * tes_combinations
 
 # The code
 
-## Native Code
-
 The simulator was originally developed in Python, but was migrated first to C++ 
 and then Rust. This was to achieve improved performance and utilisation of WASM. 
-Note while both version should output identical results the Rust version contains 
-an improved global optimisation algorithm (although the C++ version still performs better).
-
-Links to Relevant Source Code:
-- [Native Rust code](./docs)
-- [WASM code compiled from Rust](./docs)
-- [Native C++ code](./docs)
-- [WASM code compiled from C++](./docs)
-
 Please contact Jack Kirby via [GitHub](https://github.com/Jackrekirby) if you wish to
 discuss implementation aspects fo the code.
+
+## Folder Guide
+
+Here is a summary of the contents of the main folders:
+
+- `docs` contains all the files required for the HeatMyHome website (which is hosted through GitHub Pages)
+- `native-cpp` contains the native C++ code for the heating simulator. This version is not as well maintained / written after the Rust implementation, although should produce the same outputs. You can choose to run this version client side on the website under experimental options.
+- `native-rust` contains the native Rust code for the heating simulator. This version is run server side, and can also be run client side on the website under experimental options.
+
+If you are wanting to use a version of the heating model but unsure about which version to decide on I have summarised a list of pros and cons of the C++ and Rust versions below.
+
+### Advantages of C++ Version / Disadvantages of Rust Version
+
+1. The C++ version is faster than Rust, especially for large property sizes.
+2. The WASM version compiled from C++ is faster than that compiled from Rust, especially for large property sizes. (Although this is not a problem if you plan to run the code natively).
+3. The C++ version is much easier to performance profile (I used Visual Studio, for Windows). This is partially because the code is highly functionised, making it easy to see the performance of small sections of code.
+
+### Disadvantages of C++ Version / Advantages of Rust Version
+
+1. If you are unfamiliar with Rust or C++, but you have used Python or other similar language, I would recommend Rust.
+2. The C++ version is highly functionised, but this can make the code difficult to read as one must jump between functions, rather than being in chronological order.
+3. If you wanting to use the WASM compiled version, you must use Emscripten, while the Rust provides a crate (library).
+4. The Rust version contains an improved global optimisation algorithm (although the C++ version still performs better).
 
 ## Website UI
 
