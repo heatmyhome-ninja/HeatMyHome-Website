@@ -1,0 +1,412 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.svg" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./documentation.css" />
+    <title>HeatMyHome | Documentation</title>
+  </head>
+  <body>
+    <nav class="flex">
+      <div class="max-width flex row">
+        <div>
+          <a href="../">
+            <img src="../images/logo3.svg" alt="HeatMyHome" />
+          </a>
+        </div>
+        <div class="title">HeatMyHome</div>
+        <div class="mobile title">Documentation</div>
+        <div id="nav-menu" class="flex row">
+          <a class="text" href="../">Home</a>
+          <a class="text" href="../about-us.html">About Us</a>
+          <a class="text" href="../education.html">Education</a>
+          <a class="text" href="../documentation.html">Documentation</a>
+          <a href="../simulate.html" class="button">Simulate</a>
+        </div>
+        <div id="nav-toggle" class="flex" onclick="toggle_nav_menu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-buffer"></div>
+    <main class="flex column hfull">
+      <img
+        id="edu-bg-img"
+        class="left"
+        src="../images/blob-light-blue.svg"
+        alt=""
+      />
+      <div class="max-width flex column">
+        <section class="education-introduction flex">
+          <div class="flex column">
+            <h1>Simulator Outputs</h1>
+            <p>
+              The simulator outputs a list of potential heating systems that you
+              could use to heat your home. Each system has a number of
+              properties. Click on one of the properties below to learn more
+              about it.
+            </p>
+          </div>
+        </section>
+        <section class="education-options flex row wrap">
+          <div class="heat-option grow" onclick="show_education_slide(0);">
+            <!-- <div class="img">heat tech</div> -->
+            <h2>Heating<br />Technology</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(1);">
+            <!-- <div class="img">solar tech</div> -->
+            <h2>Solar<br />Technology</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(2);">
+            <!-- <div class="img">pv area</div> -->
+            <h2>PV<br />Area</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(3);">
+            <!-- <div class="img">
+              solar thermal <br />
+              area
+            </div> -->
+            <h2>
+              Solar<br />
+              Thermal Area
+            </h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(4);">
+            <!-- <div class="img">tes</div> -->
+            <h2>
+              TES<br />
+              Volume
+            </h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(5);">
+            <!-- <div class="img">opex</div> -->
+            <h2>
+              Operational<br />
+              Expenditure
+            </h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(6);">
+            <!-- <div class="img">capex</div> -->
+            <h2>
+              Capital<br />
+              Expenditure
+            </h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(7);">
+            <!-- <div class="img">npc</div> -->
+            <h2>
+              Net Present<br />
+              Cost
+            </h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(8);">
+            <!-- <div class="img">opem</div> -->
+            <h2>
+              Operational<br />
+              Emissions
+            </h2>
+          </div>
+          <div id="scroll-location"></div>
+        </section>
+
+        <div class="flex">
+          <section id="education-slides" class="foreground">
+            <div class="">
+              <h1>Heating Technology</h1>
+              <section>
+                The simulator outputs the optimal heating system for each of the
+                following technologies:
+                <ol>
+                  <li>Electric boiler</li>
+                  <li>Air Source Heat Pump (ASHP)</li>
+                  <li>Ground Source Heat Pump (GSHP)</li>
+                  <li>Hydrogen Boiler</li>
+                  <li>Hydrogen Fuel Cell</li>
+                  <li>Biomass Boiler</li>
+                  <li>Gas Boiler</li>
+                </ol>
+                Click on any of the above technologies to learn more about them.
+              </section>
+            </div>
+            <div class="hide">
+              <h1>Solar Technology</h1>
+              <section>
+                We simulate the electric boiler, ASHP and GSHP heating
+                technologies stand-alone as well as with each of the following
+                solar technologies to find the optimal combination.
+                <ol>
+                  <li>Photovoltaic (PV)</li>
+                  <li>Evacuated Tube Solar Collector (with & without PV)</li>
+                  <li>Flat Plate Solar Collector (with & without PV)</li>
+                  <li>Photovoltaic-Thermal Hybrid</li>
+                </ol>
+                Click on any of the above technologies to learn more about them.
+              </section>
+            </div>
+            <div class="hide">
+              <h1>Photovoltaic Area</h1>
+              <p>
+                For the simulations that use photovoltaic panels, the simulator
+                optimises the area of panels your home would require to achieve
+                the lowest net present cost. It optimises the area of the panels
+                to the nearest 2m<sup>2</sup>, with the maximum area of panels
+                its simulates being one quarter of your homes floor area. For
+                simulations that also have a solar thermal technology, the
+                maximum roof area is shared between technologies.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Solar Thermal Area</h1>
+              <p>
+                For the simulations that use a solar thermal technology
+                (evacuated tube, flat plate of photovoltaic-thermal hybrid), the
+                simulator optimises the area of technology that your home would
+                require to achieve the lowest net present cost. It optimises the
+                area of the technology to the nearest 2m<sup>2</sup>, with the
+                maximum area its simulates being one quarter of your homes floor
+                area. For simulations that also have a photovoltaic technology,
+                the maximum roof area is shared between technologies.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Thermal Energy Storage Volume</h1>
+              <p>
+                For the simulations that optimise the thermal energy storage
+                volume (being the electric boiler, ASHP & GSHP) the simulator
+                outputs the optimal size your home would need to achieve the
+                lowest net present cost. If the thermal energy storage is too
+                small to meet all demand during peak-electricity hours then the
+                heating technology is forces to charge the TES during
+                peak-electricity times. If the thermal energy storage is
+                oversized then money is spent uncecessarily on a large water
+                tank. The cost of a larger TES must be outweighed by the savings
+                made by being able to charges the TES during off-peak
+                electricity times.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Operational Expenditure</h1>
+              <p>
+                Operational expenditure refers to the amount of money spent
+                yearly to run the heating system (fuel costs). Often to achieve
+                low operational costs the upfront capital expenditure is high.
+                However over the life time of the system (20 years) the saving
+                of low operational costs may outweight high captial expenditure.
+                For systems with photovoltaic panels, operational costs may even
+                be negative (generate income) if the amount of electricity they
+                produce exceeds your homes needs allowing you to sell excess
+                generation back to the grid.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Captial Expenditure</h1>
+              <p>
+                Capital expenditure refers to the upfront cost / initial
+                investment to purchase the heating technologies. Most renewable
+                technologies, in particular Hydrogen Fuel Cells and GSHPs have a
+                much higher capital expenditure compared to a conventional gas
+                boiler.
+              </p>
+              <p>
+                However when combined with photovoltaic panels these
+                technologies can achieve a lower net present cost due to very
+                low or negative operational costs.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Net Present Cost</h1>
+              <p>
+                Net Present Cost (NPC) refers to the combined cost of the
+                captial investment and operational expenditure over the lifetime
+                of the system (20 years), accounting for inflation, which the
+                simulator takes as 3.5%, the standard for UK HMRC.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Operational Emissions</h1>
+              <p>
+                For each system the simulator estimates the yearly operational
+                emissions, in units of equivalent grams of carbon dioxide
+                produced. A system's emissions can be negative if the system is
+                generating electricity using photovolatic panels, which when
+                sold back to the grid offsets emissions that it produces.
+              </p>
+              <section>
+                While the heating technologies may not produce emissions
+                directly, they use electricity generated by the grid, which the
+                simulator takes as 212gCO<sub>2</sub>/kWh. The emissions of
+                Hydrogen technologies is dependent on how the hydrogen was
+                produced. Three sources are simulated:
+                <ol>
+                  <li>
+                    Green: Hydrogen produced by electrolysis of water using grid
+                    electricity. As the grid decarbonises the emissions
+                    associated with Green hydrogen will decrease.
+                  </li>
+                  <li>
+                    Grey: Hydrogen produced by combustion of natural gas, which
+                    releases carbon dioxide
+                  </li>
+                  <li>
+                    Blue: Hydrogen produced by combustion of natural gas, but
+                    with Carbon Capture and Storage (CCS) to reduce the carbon
+                    emissions produced by the combustion of natural gas.
+                  </li>
+                </ol>
+              </section>
+            </div>
+          </section>
+        </div>
+        <div class="nav-group flex row wrap">
+          <a href="../documentation/simulator-inputs.html">
+            <div class="mini-card">
+              <img src="../images/SimInput1.svg" alt="" />
+              <p>Simulator Inputs</p>
+            </div>
+          </a>
+          <a href="../documentation/simulator-how-it-works.html">
+            <div class="mini-card">
+              <img src="../images/HowitWorks1.svg" alt="" />
+              <p>How It Works</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="flex column">
+      <div class="footer-contents flex row wrap">
+        <div class="flex column box">
+          <h2>External Links</h2>
+          <a
+            href="https://github.com/heatmyhome-ninja"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a
+            href="https://sdgs.un.org/goals"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UN Developement Goals</a
+          >
+          <a
+            href="https://zerotracker.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Net-Zero Tracker</a
+          >
+        </div>
+        <div class="flex column box">
+          <img src="../images/logo3.svg" />
+        </div>
+        <div class="flex column box">
+          <h2>Contact Us</h2>
+          <a
+            href="mailto:heatmyhome.ninja@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >heatmyhome.ninja@gmail.com</a
+          >
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >School of Engineering</a
+          >
+          <a
+            href="https://warwick.ac.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            >University of Warwick</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggle_nav_menu() {
+        console.log("toggle nav menu");
+        let menu = document.getElementById("nav-menu");
+        let toggle = document.getElementById("nav-toggle");
+        if (menu.classList.contains("open")) {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.remove("open");
+            div.classList.add("close");
+          }
+          menu.classList.remove("open");
+          menu.classList.add("close");
+          toggle.classList.remove("open");
+        } else {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.add("open");
+            div.classList.remove("close");
+          }
+          menu.classList.add("open");
+          menu.classList.remove("close");
+          toggle.classList.add("open");
+        }
+      }
+
+      const heat_options = [
+        "#heating-technology",
+        "#solar-technology",
+        "#pv-area",
+        "#solar-thermal-area",
+        "#tes-volume",
+        "#operational-expenditure",
+        "#capital-expenditure",
+        "#net-present-cost",
+        "#operational-emissions",
+      ];
+
+      let slide_id = 0;
+      function show_education_slide(new_slide_id) {
+        let slides = document
+          .getElementById("education-slides")
+          .getElementsByTagName("div");
+        slides[slide_id].classList.add("hide");
+        slides[new_slide_id].classList.remove("hide");
+
+        let fields = slides[new_slide_id].children;
+        for (let field of fields) {
+          field.classList.remove("fadein");
+          field.classList.add("fadein");
+        }
+
+        document
+          .getElementsByClassName("education-options")[0]
+          .getElementsByClassName("heat-option")
+          [slide_id].classList.remove("grow");
+        document
+          .getElementsByClassName("education-options")[0]
+          .getElementsByClassName("heat-option")
+          [new_slide_id].classList.add("grow");
+
+        document.getElementById("scroll-location").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "start",
+        });
+
+        window.location.hash = heat_options[new_slide_id];
+        slide_id = new_slide_id;
+      }
+
+      let heat_index = heat_options.indexOf(window.location.hash);
+      console.log("Hash: ", window.location.hash, "index: ", heat_index);
+      if (heat_index > -1) {
+        show_education_slide(heat_index);
+      }
+
+      document
+        .getElementById("nav-menu")
+        .getElementsByTagName("a")[3]
+        .classList.add("showing");
+    </script>
+  </body>
+</html>

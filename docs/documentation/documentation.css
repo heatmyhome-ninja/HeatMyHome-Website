@@ -1,0 +1,29 @@
+main {
+  position: relative;
+  min-height: calc(100% - 4rem);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+main .max-width {
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  height: 100%;
+  flex-grow: 1;
+}
+
+.heat-option {
+  height: 4rem;
+}
+
+#education-slides {
+  margin: 0rem;
+  padding: 0rem;
+}
+
+@media screen and (max-width: 30rem) {
+  #education-slides {
+    font-size: 0.8rem;
+  }
+}

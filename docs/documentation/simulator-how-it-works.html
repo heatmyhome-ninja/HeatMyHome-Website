@@ -1,0 +1,292 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.svg" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./simulator-how-it-works.css" />
+    <title>HeatMyHome | Documentation</title>
+  </head>
+  <body>
+    <nav class="flex">
+      <div class="max-width flex row">
+        <div>
+          <a href="../">
+            <img src="../images/logo3.svg" alt="HeatMyHome" />
+          </a>
+        </div>
+        <div class="title">HeatMyHome</div>
+        <div class="mobile title">Documentation</div>
+        <div id="nav-menu" class="flex row">
+          <a class="text" href="../">Home</a>
+          <a class="text" href="../about-us.html">About Us</a>
+          <a class="text" href="../education.html">Education</a>
+          <a class="text" href="../documentation.html">Documentation</a>
+          <a href="../simulate.html" class="button">Simulate</a>
+        </div>
+        <div id="nav-toggle" class="flex" onclick="toggle_nav_menu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-buffer"></div>
+    <main class="flex column hfull">
+      <img
+        id="edu-bg-img"
+        class="left"
+        src="../images/blob-light-blue.svg"
+        alt=""
+      />
+      <div class="max-width flex column">
+        <section class="education-introduction flex">
+          <h1>Simulator How-It-Works</h1>
+        </section>
+        <div class="flex">
+          <section id="education-slides" class="foreground">
+            <div class="">
+              <h3>Notices & Links</h3>
+              <p>
+                This page provide an overview on how the simulator works. For
+                full details on the heating model read the journal article,
+                which will be linked here shortly. The source code for the
+                website and heating simulator, along with documentation can be
+                found on out
+                <a
+                  href="https://github.com/heatmyhome-ninja"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </p>
+              <p>
+                The costs of the various technologies and their fuel prices are
+                based on data prior to Covid-19. One should therefore expect the
+                price estimates from the simulation to underestimate the costs
+                under current cirmcumstances.
+              </p>
+              <h3>Model Overview</h3>
+              <p>
+                The simulation model requires six inputs from the user, being
+                the homes:
+              </p>
+              <ol class="fmt">
+                <li>Postcode</li>
+                <li>Number of Occupants</li>
+                <li>Thermostat Temperature</li>
+                <li>Floor Area</li>
+                <li>Yearly Space Heating Energy Consumption</li>
+                <li>Maximum Hot Water Tank Volume</li>
+              </ol>
+              <p>
+                From the postcode, the longitude and latitude of the home can be
+                determined, which are rounded to the nearest half a degree. The
+                rounded position is used to load the hourly outside temperature
+                and solar radiation datasets for the location. We wish to thank
+                <a href="renewables.ninja">www.renewables.ninja</a> who provided
+                the weather data used by the simulator.
+              </p>
+              <p>
+                A home’s floor area and yearly space heating energy consumption
+                can usually be found on your Energy Performance Certificate
+                (EPC), a legal requirement for any building sold, let or
+                constructed in the UK since 2007.
+              </p>
+              <p>
+                As the simulator only outputs the optimal hot water tank size
+                for each heating system an upper size limit is required as input
+                to ensure the simulator does not optimise for a tank size that
+                could not feasibly fit into the home.
+              </p>
+              <p>
+                The first step of the model is to estimate the thermal
+                transmittance (U value) of the property. This refers to how
+                quickly heat is tranferred between the property and environment.
+                The U value is calculated by simulating the home’s yearly space
+                heating demand at an hourly resolution using a range of U values
+                from 0.5 to 3.0 in 0.01 W/m<sup>2</sup>K step increments and
+                selecting the U value which results in a yearly space heating
+                demand closest to that specified by the user.
+              </p>
+              <p>
+                The hourly space heating demand is taken as the energy required
+                to raise the inside temperature to the desired temperature. The
+                inside temperature is a function of heat loss to the
+                environment, and gain from body heat and solar radiation. With
+                the U value calculated, the space heating demand is
+                recalculated, in addition to hot water demand, using the
+                inputted thermostat temperature.
+              </p>
+              <p>
+                Hot water energy consumption is a function of inlet cold water
+                temperature and hot water consumption per occupant, accounting
+                for daily and monthly variation. The total demand is then used
+                to calculate the operational costs and emissions of the
+                hydrogen, biomass and gas heating systems, by multiplying the
+                energy demand with operating costs and emissions per unit energy
+                respectively, whilst adjusting for system efficiencies.
+              </p>
+              <p>
+                As for the electrified heating technologies, the model is more
+                complex, being simulated for a range of solar thermal and
+                photovoltaic ancillary technology sizes and combinations, TES
+                sizes and tariffs. The peak hourly demand is used to size the
+                electrified heating technologies. Each solar ancillary is
+                simulated in 2m<sup>2</sup> area increments from 2m<sup>2</sup>
+                up to a quarter of the inputted floor area (assumed half the
+                roof area). The TES size is incremented in 0.1m<sup>3</sup>
+                steps from 0.1 up to 3.0m<sup>3</sup>. As for tariff options,
+                there are five, including flat-rate, night off-peak,
+                evening-peak, EV off-peak and variable.For each hour over a
+                year, the following steps occur.
+              </p>
+              <ol class="fmt">
+                <li>
+                  Calculate the change in inside temperature due to heat loss to
+                  the environment and heat gain from body heat, solar radiation
+                  and heat loss from the TES into the living space.
+                </li>
+                <li>
+                  Update the TES state of charge due to heat loss, solar thermal
+                  generation, space and hot water usage, and heat produced from
+                  the electrified heating technology, powered either from grid
+                  import or solar photovoltaics.
+                </li>
+                <li>
+                  Calculate operational costs from electricity import for the
+                  hour using the selected tariff and operational emissions
+                  associated with the solar ancillaries and grid import.
+                </li>
+                <li>
+                  The optimal solar ancillary size, TES size and tariff is then
+                  outputted to the user for each electrified heat technology -
+                  solar ancillary combination, where the optimal system is
+                  considered that with the lowest lifetime cost.
+                </li>
+              </ol>
+            </div>
+          </section>
+        </div>
+        <div class="nav-group flex row wrap">
+          <a href="../documentation/simulator-outputs.html">
+            <div class="mini-card">
+              <img src="../images/SimOutput1.svg" alt="" />
+              <p>Simulator Outputs</p>
+            </div>
+          </a>
+          <a href="../documentation/simulator-inputs.html">
+            <div class="mini-card">
+              <img src="../images/SimInput1.svg" alt="" />
+              <p>Simulator Inputs</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+    <!-- <main class="flex column">
+      <section class="flex">
+        <h1>Simulator: How-It-Works</h1>
+        <div class="flex column">
+          <p>
+            This page provide an overview on how the simulator works. For full
+            details on the heating model read the journal article, which will be
+            linked here shortly.
+          </p>
+          <p>
+            We wish to thank
+            <a href="www.renewables.ninja">www.renewables.ninja</a> who provided
+            the weather data used by the simulator.
+          </p>
+          <p>
+            Its important to note the costs of the various technologies and
+            their fuel prices are based on data prior to Covid-19. One should
+            therefore expect the price estimates from the simulation to
+            underestimate the costs under current cirmcumstances.
+          </p>
+        </div>
+      </section>
+    </main> -->
+
+    <footer class="flex column">
+      <div class="footer-contents flex row wrap">
+        <div class="flex column box">
+          <h2>External Links</h2>
+          <a
+            href="https://github.com/heatmyhome-ninja"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a
+            href="https://sdgs.un.org/goals"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UN Developement Goals</a
+          >
+          <a
+            href="https://zerotracker.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Net-Zero Tracker</a
+          >
+        </div>
+        <div class="flex column box">
+          <img src="../images/logo3.svg" />
+        </div>
+        <div class="flex column box">
+          <h2>Contact Us</h2>
+          <a
+            href="mailto:heatmyhome.ninja@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >heatmyhome.ninja@gmail.com</a
+          >
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >School of Engineering</a
+          >
+          <a
+            href="https://warwick.ac.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            >University of Warwick</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggle_nav_menu() {
+        console.log("toggle nav menu");
+        let menu = document.getElementById("nav-menu");
+        let toggle = document.getElementById("nav-toggle");
+        if (menu.classList.contains("open")) {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.remove("open");
+            div.classList.add("close");
+          }
+          menu.classList.remove("open");
+          menu.classList.add("close");
+          toggle.classList.remove("open");
+        } else {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.add("open");
+            div.classList.remove("close");
+          }
+          menu.classList.add("open");
+          menu.classList.remove("close");
+          toggle.classList.add("open");
+        }
+      }
+
+      document
+        .getElementById("nav-menu")
+        .getElementsByTagName("a")[3]
+        .classList.add("showing");
+    </script>
+  </body>
+</html>

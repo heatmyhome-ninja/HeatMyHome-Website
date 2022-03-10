@@ -1,0 +1,712 @@
+:root {
+  --warn-color: #ff2300;
+  --valid-color: #00dd22;
+  --info-color: #00aeff;
+  /* --neutral-color: #d3d3d3; */
+  --neutral-color: #949494;
+  --white-color: white;
+  --black-color: black;
+  --experimental-color: #2f00ff;
+  --translucent-color: rgba(255, 255, 255, 0.9);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Sora", sans-serif;
+}
+
+.body-spacer {
+  padding: 1rem;
+  padding-bottom: 0rem;
+  width: 20rem;
+  text-align: center;
+  color: var(--neutral-color);
+}
+
+.inputs-box {
+  position: relative;
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem;
+  width: 20rem;
+  background-color: var(--translucent-color);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+}
+
+.input-box {
+  padding: 0rem 0rem;
+  width: 100%;
+}
+
+#results-guide {
+  width: 20rem;
+  height: fit-content;
+  border: 1px solid black;
+  background-color: var(--translucent-color);
+  font-size: 0.8rem;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: justify;
+}
+
+#notification-box {
+  position: relative;
+  width: 20rem;
+  height: fit-content;
+  border: 1px solid var(--warn-color);
+  background-color: var(--translucent-color);
+  font-size: 0.8rem;
+  padding: 1rem;
+  padding-top: 2rem;
+  margin: 1rem;
+  margin-bottom: 0rem;
+  text-align: justify;
+}
+
+#notification-box h1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: var(--warn-color);
+  color: white;
+  padding: 0rem;
+  margin: 0rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 2rem white inset !important;
+  background-color: white !important;
+  background-clip: content-box !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input.hide-spinner::-webkit-outer-spin-button,
+input.hide-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input.hide-spinner[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  align-items: flex-end;
+  align-content: center;
+}
+
+.input-field {
+  position: relative;
+  margin: 0rem 0rem;
+  padding: 0rem;
+  width: 90%;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+}
+
+.neighbour-input-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: flex-end;
+  align-content: center;
+}
+
+.neighbour-input-field {
+  position: relative;
+  margin: 0rem 0rem;
+  padding: 0rem;
+  width: 15rem;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+}
+
+.neighbour-input-field > * {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 12rem;
+  color: var(--valid-color);
+  padding: 0.5rem 0rem;
+  margin: 0rem;
+  font-size: 1rem;
+}
+
+.neighbour-input-field input {
+  border: 0;
+  outline: 0;
+  padding: 0rem 0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.2rem;
+  border-radius: 0px;
+  box-shadow: none;
+  border-bottom: 2px solid var(--valid-color);
+  background-color: transparent;
+  color: var(--black-color);
+}
+
+.neighbour-input-field p {
+  cursor: text;
+  pointer-events: none;
+  font-size: 0.9rem;
+  bottom: calc(0.9rem + 0.5rem);
+}
+
+.input-apply-button {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: fit-content;
+  padding: 0rem 0.5rem;
+  height: 2rem;
+  color: var(--neutral-color);
+  border: 2px solid var(--neutral-color);
+  transition: 0.2s all ease-in-out;
+}
+
+.input-apply-button:hover {
+  color: var(--valid-color);
+  border-color: var(--valid-color);
+}
+
+.input-side-button {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--info-color);
+  border: 1px solid var(--info-color);
+  transition: 0.2s all ease-in-out;
+}
+
+.input-side-button:hover,
+.input-side-button.active {
+  background-color: var(--info-color);
+  border-color: var(--info-color);
+  color: white;
+}
+
+.input-field > * {
+  position: absolute;
+  bottom: 0;
+  left: 0rem;
+  width: 15rem;
+  color: var(--neutral-color);
+  padding: 0rem 0rem;
+  padding-bottom: 0.25rem;
+  margin: 0rem;
+  font-size: 1rem;
+}
+
+.input-field.neighbour > * {
+  width: 14rem;
+}
+
+.input-field input {
+  border: 0;
+  outline: 0;
+  padding: 0rem 0rem;
+
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-radius: 0px;
+  box-shadow: none;
+  border-bottom: 1px solid var(--neutral-color);
+  background-color: transparent;
+  color: var(--black-color);
+}
+
+.input-field p {
+  transition: 0.2s all ease-in-out;
+  cursor: text;
+  pointer-events: none;
+}
+
+.input-field:not(.nofocus) input:focus ~ p {
+  font-size: 0.9rem;
+  bottom: calc(0.9rem + 0.7rem);
+}
+
+.input-field input.invalid {
+  border-color: var(--warn-color);
+}
+
+.input-field input.invalid ~ p {
+  color: var(--warn-color);
+  font-size: 0.9rem;
+  bottom: calc(0.9rem + 0.7rem);
+}
+
+.input-field input.valid {
+  border-color: var(--valid-color);
+}
+
+.input-field input.valid ~ p {
+  color: var(--valid-color);
+  font-size: 0.9rem;
+  bottom: calc(0.9rem + 0.7rem);
+}
+
+.inputs-box .msg-box {
+  margin: 0.5rem 0rem;
+  padding: 0.5rem 0.5rem;
+  text-align: justify;
+  width: 100%;
+  border: 0px;
+  outline: 0px;
+  border: 1px solid var(--neutral-color);
+  color: var(--neutral-color);
+  margin-bottom: 0rem;
+  font-size: 0.8rem;
+  font-family: "Sora", sans-serif;
+  background: transparent;
+  border-radius: 0px;
+  animation: fadeIn 0.2s;
+  animation-fill-mode: forwards;
+  transform-origin: top;
+}
+
+.msg-box a {
+  color: blue;
+  font-size: 0.8rem;
+}
+
+.msg-box a:hover {
+  text-decoration: none;
+}
+
+.msg-box.warn {
+  border-color: var(--warn-color);
+  color: var(--warn-color);
+}
+
+.msg-box.info {
+  border-color: var(--info-color);
+  color: var(--info-color);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.inputs-box select {
+  box-sizing: border-box;
+  padding: 0rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 3rem;
+  border: 0px;
+  outline: 0px;
+  border: 1px solid var(--neutral-color);
+  color: var(--neutral-color);
+  font-size: 1rem;
+  background: transparent;
+  border-radius: 0px;
+}
+
+.inputs-box select.valid {
+  border-color: var(--valid-color);
+  color: var(--valid-color);
+}
+
+.inputs-box select.invalid {
+  border-color: var(--warn-color);
+  color: var(--warn-color);
+}
+
+.color-neutral {
+  color: var(--neutral-color);
+}
+
+.color-black {
+  color: var(--black-color);
+}
+
+.color-valid {
+  color: var(--valid-color);
+}
+
+.color-warn {
+  color: var(--warn-color);
+}
+
+.inputs-box button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0rem;
+  border: 0px;
+  outline: 0px;
+  border: 1px solid var(--neutral-color);
+  color: var(--valid-color);
+  /* padding: 0.5rem 1rem; */
+  font-size: 1rem;
+  background: transparent;
+  border-radius: 0px;
+  transition: 0.2s all ease-in-out;
+  border: 0;
+  outline: 0;
+  width: 15rem;
+  height: 2rem;
+  /* animation: fadeIn 0.2s; */
+  /* animation-fill-mode: forwards; */
+  /* transform-origin: top; */
+}
+
+.inputs-box button.invalid {
+  color: var(--warn-color);
+  border-color: var(--warn-color);
+}
+
+.inputs-box button:hover {
+  border-color: var(--valid-color);
+  background-color: var(--valid-color);
+}
+
+.inputs-box button.active {
+  border-color: var(--valid-color);
+  color: var(--valid-color);
+}
+
+.inputs-box button.invalid:hover {
+  border-color: var(--warn-color);
+  background-color: var(--warn-color);
+  color: white;
+}
+
+.input-spacer {
+  height: 0.5rem;
+}
+
+.msg-box.search {
+  display: flex;
+  flex-direction: row;
+}
+
+.msg-box.search > div {
+  position: relative;
+  margin-left: 2rem;
+  padding: 0.25rem 0rem;
+}
+
+.dots {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--info-color);
+  color: var(--info-color);
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+}
+
+.dots::before,
+.dots::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dots::before {
+  left: -15px;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--info-color);
+  color: var(--info-color);
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+
+.dots::after {
+  left: 15px;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--info-color);
+  color: var(--info-color);
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes dotFlashing {
+  0% {
+    background-color: var(--info-color);
+  }
+  50%,
+  100% {
+    background-color: #c8edff;
+  }
+}
+
+#input-submit {
+  border: 1px solid var(--valid-color);
+  color: var(--valid-color);
+  align-items: center;
+}
+
+#input-submit:hover {
+  background-color: var(--valid-color);
+  border-color: var(--valid-color);
+  color: white;
+}
+
+#input-submit.invalid {
+  border: 1px solid var(--warn-color);
+  color: var(--warn-color);
+}
+
+#input-submit.invalid:hover {
+  background-color: var(--warn-color);
+  border-color: var(--warn-color);
+  color: white;
+}
+
+#submit-group .input-side-button,
+#help-advanced,
+#run-location {
+  border-color: var(--experimental-color);
+  color: var(--experimental-color);
+  background-color: transparent;
+}
+#submit-group .input-side-button:hover,
+#submit-group .input-side-button.active {
+  background-color: var(--experimental-color);
+  color: white;
+}
+
+.click-dismiss {
+  cursor: pointer;
+}
+
+.input-box sup {
+  font-size: 0.6rem;
+}
+
+.submit-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: flex-end;
+  align-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.check-row {
+  margin-top: 0.5rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  color: var(--experimental-color);
+}
+
+.check-row.ticked {
+  color: var(--experimental-color);
+}
+
+.checkbox {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+
+  border: 1px solid var(--experimental-color);
+  /* transition: 0.2s all ease-in-out; */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.6rem;
+  width: 0.5rem;
+  height: 1rem;
+  border: 2px solid var(--experimental-color);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.crossmark {
+  width: 2px;
+  height: 1.2rem;
+  background-color: var(--experimental-color);
+  transform-origin: center;
+  transform: rotate(45deg) translateX(1px);
+}
+
+.crossmark.other {
+  transform: rotate(-45deg) translateX(-1px);
+}
+
+.ticked .checkbox {
+  border-color: var(--experimental-color);
+}
+
+#neighbour-container {
+  width: 100%;
+  height: fit-content;
+  border: 1px solid var(--neutral-color);
+  padding: 0rem 0.5rem;
+  padding-bottom: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.inputs-box .title {
+  background-color: var(--neutral-color);
+  width: 100%;
+  padding: 0.2rem 0rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  color: white;
+}
+
+#neighbour-container.hide {
+  display: none;
+}
+
+#guide {
+  font-size: 1rem;
+  /* font-weight: bold; */
+  text-align: center;
+  transition: 0.2s background-color ease-in-out, 0.2s color ease-in-out;
+}
+
+#guide:hover {
+  background-color: var(--info-color);
+  color: white;
+}
+
+.input-button {
+  width: fit-content;
+  display: inline-block;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  overflow-wrap: break-word;
+}
+
+.input-button:hover {
+  text-decoration: none;
+}
+
+.action-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: flex-end;
+  align-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.action-row button,
+.action-row a,
+.action-row label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 0;
+  outline: 0;
+  width: 15rem;
+  height: 2rem;
+  padding: 0.2rem 0rem;
+  border-radius: 0px;
+  box-shadow: none;
+  border: 1px solid var(--info-color);
+  background-color: transparent;
+  color: var(--info-color);
+  /* font-weight: bold; */
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.action-row button:hover,
+.action-row a:hover,
+.action-row label:hover {
+  background-color: var(--info-color);
+  border-color: var(--info-color);
+  color: white;
+}
+
+#save-url {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.search.hide {
+  display: none;
+}

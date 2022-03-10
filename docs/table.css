@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Sora", sans-serif;
+}
+
+#table {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.9rem;
+  text-align: center;
+  width: min(50rem, calc(100% - 1rem));
+  margin: 0rem min(1rem, 1%);
+  margin-bottom: 1rem;
+  background-color: var(--translucent-color);
+}
+
+#table .column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-bottom: 0.5rem;
+  border-bottom: 4px solid black;
+}
+
+#table .column > p,
+#table .column .name > p {
+  height: 1.1rem;
+}
+
+#table .column > * {
+  transition: order 1s ease-in-out;
+}
+
+#table .name {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#table .name > p:first-child {
+  padding: 0rem 0.2rem;
+  min-width: 4rem;
+}
+
+#table .only-child {
+  width: 100%;
+  text-align: center;
+}
+
+#table h1 {
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  width: 100%;
+  padding: min(1.2%, 1rem);
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+}
+
+@media screen and (min-width: 700px) {
+  #table h1 {
+    height: 4rem;
+    font-size: 0.9rem;
+  }
+
+  #table .column .name > p:not(.only-child) {
+    width: 5rem;
+  }
+  #table .column > p,
+  #table .column .name > p {
+    height: 1.5rem;
+  }
+}
+
+#table .column > h1 {
+  position: relative;
+}
+
+#table-key {
+  width: min(25rem, calc(100% - 1rem));
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #00aeff;
+  color: #00aeff;
+
+  font-size: 0.8rem;
+}
+
+#ghost-key {
+  width: min(21.5rem, calc(100% - 1rem));
+}
+
+#key-inner {
+  background-color: var(--translucent-color);
+  padding: 0.5rem 1rem;
+}
+
+#table-key > div {
+  width: 100%;
+}
+
+#key-header {
+  font-size: 1rem;
+  text-align: center;
+  background-color: #00aeff;
+  color: white;
+  width: 100%;
+}
+
+#table-key h1 {
+  font-size: 1rem;
+  text-align: center;
+}
+
+#table-key .key-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#sortby-row {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#sortby-row label {
+  background-color: var(--neutral-color);
+  color: white;
+  text-align: center;
+}
+
+#sortby {
+  box-sizing: border-box;
+  padding: 0rem;
+  width: 15rem;
+  height: 3rem;
+  border: 0px;
+  outline: 0px;
+  border: 2px solid var(--neutral-color);
+  color: black;
+  background: var(--translucent-color);
+  border-radius: 0px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#table .column:nth-of-type(1) {
+  border-left: 2px solid #00aeff;
+  border-bottom-color: #00aeff;
+}
+
+#table .column:nth-of-type(1) > h1 {
+  background-color: #00aeff;
+  border-color: #00aeff;
+}
+
+#table .column:nth-of-type(2) > h1 {
+  background-color: yellowgreen;
+  border-color: yellowgreen;
+}
+
+#table .column:nth-of-type(3) > h1 {
+  background-color: orangered;
+  border-color: orangered;
+}
+
+#table .column:nth-of-type(4) > h1 {
+  background-color: plum;
+  border-color: plum;
+}
+
+#table .column:nth-of-type(5) > h1 {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+}
+
+#table .column:nth-of-type(6) > h1 {
+  background-color: lightslategray;
+  border-color: lightslategray;
+}
+
+#table .column:nth-of-type(2) {
+  border-bottom-color: yellowgreen;
+}
+#table .column:nth-of-type(3) {
+  border-bottom-color: orangered;
+}
+#table .column:nth-of-type(4) {
+  border-bottom-color: plum;
+}
+#table .column:nth-of-type(5) {
+  border-bottom-color: lightseagreen;
+}
+
+#table .column:nth-of-type(6) {
+  border-bottom-color: lightslategray;
+  border-right: 2px solid lightslategray;
+}
+
+#table-area {
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+}
+
+#table-area.hide {
+  display: none;
+}
+
+#table-key .hide-mobile {
+  display: flex;
+}
+
+#table-key .show-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  #table .column > h1 {
+    font-size: 0.8rem;
+    height: 6rem;
+  }
+
+  #table .column > h1 > p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(90deg);
+    width: 6rem;
+    padding: 0.1rem;
+  }
+  #table-key .hide-mobile {
+    display: none;
+  }
+  #table-key .show-mobile {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 70rem) {
+  #key-sort {
+    flex-direction: column-reverse;
+  }
+}

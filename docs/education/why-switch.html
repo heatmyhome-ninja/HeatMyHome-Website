@@ -1,0 +1,333 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.svg" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>HeatMyHome | Education</title>
+  </head>
+  <body>
+    <nav class="flex">
+      <div class="max-width flex row">
+        <div>
+          <a href="../">
+            <img src="../images/logo3.svg" alt="HeatMyHome" />
+          </a>
+        </div>
+        <div class="title">HeatMyHome</div>
+        <div class="mobile title">Education</div>
+        <div id="nav-menu" class="flex row">
+          <a class="text" href="../">Home</a>
+          <a class="text" href="../about-us.html">About Us</a>
+          <a class="text" href="../education.html">Education</a>
+          <a class="text" href="../documentation.html">Documentation</a>
+          <a href="../simulate.html" class="button">Simulate</a>
+        </div>
+        <div id="nav-toggle" class="flex" onclick="toggle_nav_menu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-buffer"></div>
+    <main class="flex column full-height">
+      <img
+        id="edu-bg-img"
+        class="left"
+        src="../images/blob-light-blue.svg"
+        alt=""
+      />
+      <div class="max-width flex column">
+        <section class="education-introduction flex">
+          <div class="flex column">
+            <h1>Why Switch?</h1>
+            <p>
+              Gas boilers reside in 85% of UK homes, so why should you switch to
+              an alternative? Click on the options below to learn why you should
+              make the switch to a low-carbon heating solution.
+            </p>
+          </div>
+        </section>
+        <section class="education-options flex row wrap">
+          <div class="heat-option grow" onclick="show_education_slide(0);">
+            <!-- <div class="img">climate change</div> -->
+            <img src="../images/ClimateChange.svg" alt="" />
+            <h2>Climate<br />Change</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(1);">
+            <!-- <div class="img">incentives</div> -->
+            <img src="../images/Incentives.png" alt="" />
+            <h2>Incentives</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(2);">
+            <!-- <div class="img">save money</div> -->
+            <img src="../images/SaveMoney.png" alt="" />
+            <h2>Save<br />Money</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(3);">
+            <!-- <div class="img">legislation</div> -->
+            <img src="../images/Legislation.svg" alt="" />
+            <h2>Legislation</h2>
+          </div>
+        </section>
+
+        <div id="scroll-location"></div>
+        <section id="education-slides" class="foreground">
+          <div class="">
+            <h1>Climate Change</h1>
+            <p>
+              Climate change is having devasting consequences to our planet,
+              from increasing frequency of weather extremes, to migration and
+              extinction of species. Green house gases emitting by us have
+              resulted in global warming, and its why 193 countries agreed to
+              try and limit global warming to within 1.5<sup>o</sup>C of
+              pre-industrial average temperatures. In 2020 average temperatures
+              had already risen to 1.2<sup>o</sup>C above pre-industrial levels.
+              To meet this goal we need to cut our carbon emissions
+              substantially.
+            </p>
+            <p>
+              One of the most significant ways you can cut your emissions is by
+              changing how you heat your home.
+            </p>
+            <p>
+              In the UK, the largest source of annual CO2 emissions is heating
+              (37%), of which gas boilers are the primary contributor, providing
+              space and water heating for 85% of homes.
+            </p>
+          </div>
+          <div class="hide">
+            <h1>Incentives</h1>
+            <p>
+              As low-carbon heating technologies, being in their infancy, are
+              currently more expensive than traditional gas boilers, the UK
+              government offers incentives for switching to low-carbon heating
+              technologies.
+            </p>
+            <h3>Renewable Heat Incentive Scheme</h3>
+            <p>
+              The current incentive scheme on offer is the
+              <a
+                href="https://www.ofgem.gov.uk/environmental-and-social-schemes/domestic-renewable-heat-incentive-domestic-rhi"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Domestic Renewable Heat Incentives (RHI)</a
+              >
+              scheme, but this ends on the 31st of March 2022. Heating
+              technologies eligible the RHI are:
+            </p>
+            <ol class="fmt">
+              <li>Air Source Heat Pumps</li>
+              <li>Ground Source Heat Pumps</li>
+              <li>Biomass Boilers</li>
+              <li>Evacuated Tube Collectors</li>
+              <li>Flat Plate Collectors</li>
+            </ol>
+            <p>
+              For more information, including eligability, a payment calculator
+              along with how to apply visit the
+              <a
+                href="https://www.gov.uk/domestic-renewable-heat-incentive"
+                target="_blank"
+                rel="noopener noreferrer"
+                >government website</a
+              >.
+            </p>
+            <h3>Boiler Upgrade Scheme</h3>
+            <p>
+              Launching in spring 2022, the
+              <a
+                href="https://www.ofgem.gov.uk/environmental-and-social-schemes/boiler-upgrade-scheme-bus"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Boiler Upgrade Scheme (BUS)</a
+              >
+              replaces the RHI, offering upfront capital grants to support
+              low-carbon heating technologies. Open to properties located in
+              England and Wales, the BUS aims to encourage homeowners to switch
+              from conventional gas boilers to a more environmentally friendly
+              alternative. Heating technologies eligible for upfront capital
+              grants through the BUS are:
+            </p>
+            <ol class="fmt">
+              <li>Air Source Heat Pumps</li>
+              <li>Ground Source Heat Pumps</li>
+              <li>Biomass Boilers (in some circumstances)</li>
+            </ol>
+          </div>
+          <div class="hide">
+            <h1>Save Money</h1>
+            <p>
+              While low-carbon heating technologies are typically far more
+              expensive to install, they can be cheaper to run. If you install
+              solar panels to power the heating technology, and use excess
+              generation to power your home or sell the electricity to the grid,
+              over the lifetime of the system its
+              <a href="../documentation/simulator-outputs.html#net-present-cost"
+                >net present cost</a
+              >
+              can be less than that of a gas boiler, and may even generate
+              income.
+            </p>
+          </div>
+          <div class="hide">
+            <h1>Legislation</h1>
+            <p>
+              As part of the UK government’s commitment to achieving net-zero
+              emissions by 2050, the installation of gas boilers in new homes
+              will be banned from 2025.
+            </p>
+            <p>
+              Furthermore, the government expects to phase out gas boilers in
+              existing homes by 2035, through the offering of grants and
+              incentives to homeowners for switching to low-carbon heating
+              appliances.
+            </p>
+          </div>
+        </section>
+        <div class="nav-group flex row wrap">
+          <a href="../education/solar-technologies.html">
+            <div class="mini-card">
+              <img src="../images/SolarTech1.svg" alt="" />
+              <p>Solar Technologies</p>
+            </div>
+          </a>
+          <a href="../education/heating-technologies.html">
+            <div class="mini-card">
+              <img src="../images/HeatTech1.svg" alt="" />
+              <p>Heating Technologies</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="flex column">
+      <div class="footer-contents flex row wrap">
+        <div class="flex column box">
+          <h2>External Links</h2>
+          <a
+            href="https://github.com/heatmyhome-ninja"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a
+            href="https://sdgs.un.org/goals"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UN Developement Goals</a
+          >
+          <a
+            href="https://zerotracker.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Net-Zero Tracker</a
+          >
+        </div>
+        <div class="flex column box">
+          <img src="../images/logo3.svg" />
+        </div>
+        <div class="flex column box">
+          <h2>Contact Us</h2>
+          <a
+            href="mailto:heatmyhome.ninja@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >heatmyhome.ninja@gmail.com</a
+          >
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >School of Engineering</a
+          >
+          <a
+            href="https://warwick.ac.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            >University of Warwick</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggle_nav_menu() {
+        console.log("toggle nav menu");
+        let menu = document.getElementById("nav-menu");
+        let toggle = document.getElementById("nav-toggle");
+        if (menu.classList.contains("open")) {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.remove("open");
+            div.classList.add("close");
+          }
+          menu.classList.remove("open");
+          menu.classList.add("close");
+          toggle.classList.remove("open");
+        } else {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.add("open");
+            div.classList.remove("close");
+          }
+          menu.classList.add("open");
+          menu.classList.remove("close");
+          toggle.classList.add("open");
+        }
+      }
+
+      const heat_options = [
+        "#climate-change",
+        "#incentives",
+        "#save-money",
+        "#legislation",
+      ];
+
+      let slide_id = 0;
+      function show_education_slide(new_slide_id) {
+        let slides = document
+          .getElementById("education-slides")
+          .getElementsByTagName("div");
+        slides[slide_id].classList.add("hide");
+        slides[new_slide_id].classList.remove("hide");
+
+        let fields = slides[new_slide_id].children;
+        for (let field of fields) {
+          field.classList.remove("fadein");
+          field.classList.add("fadein");
+        }
+
+        document
+          .getElementsByClassName("education-options")[0]
+          .getElementsByClassName("heat-option")
+          [slide_id].classList.remove("grow");
+        document
+          .getElementsByClassName("education-options")[0]
+          .getElementsByClassName("heat-option")
+          [new_slide_id].classList.add("grow");
+
+        document.getElementById("scroll-location").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "start",
+        });
+
+        window.location.hash = heat_options[new_slide_id];
+        slide_id = new_slide_id;
+      }
+
+      let heat_index = heat_options.indexOf(window.location.hash);
+      console.log("Hash: ", window.location.hash, "index: ", heat_index);
+      if (heat_index > -1) {
+        show_education_slide(heat_index);
+      }
+
+      document
+        .getElementById("nav-menu")
+        .getElementsByTagName("a")[2]
+        .classList.add("showing");
+    </script>
+  </body>
+</html>

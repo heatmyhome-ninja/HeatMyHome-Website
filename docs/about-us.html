@@ -1,0 +1,159 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <title>HeatMyHome | About Us</title>
+  </head>
+  <body>
+    <nav class="flex">
+      <div class="max-width flex row">
+        <div>
+          <a href="./">
+            <img src="./images/logo3.svg" alt="HeatMyHome" />
+          </a>
+        </div>
+        <div class="title">HeatMyHome</div>
+        <div class="mobile title">About Us</div>
+        <div id="nav-menu" class="flex row">
+          <a class="text" href="./">Home</a>
+          <a class="text" href="./about-us.html">About Us</a>
+          <a class="text" href="./education.html">Education</a>
+          <a class="text" href="./documentation.html">Documentation</a>
+          <a href="./simulate.html" class="button">Simulate</a>
+        </div>
+        <div id="nav-toggle" class="flex" onclick="toggle_nav_menu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-buffer"></div>
+    <main class="flex education-main">
+      <img id="edu-bg-img" src="./images/aboutus1.svg" alt="" />
+      <div class="max-width flex row wrap">
+        <div class="card flex column">
+          <!-- <div class="img">motivation</div> -->
+          <img src="./images/Motivation.svg" class="med" alt="" />
+          <h2>Motivation</h2>
+          <p>
+            Learn about the why the simulation model and website was developed.
+          </p>
+          <a href="./about-us/motivation.html">Read more</a>
+        </div>
+        <div class="card flex column">
+          <!-- <div class="img">our<br />team</div> -->
+          <img src="./images/OurTeam.png" class="med" alt="" />
+          <h2>
+            Our<br />
+            Team
+          </h2>
+          <p>
+            Learn about the team that worked to develop the simulation model and
+            website.
+          </p>
+          <a href="./about-us/our-team.html">Read more</a>
+        </div>
+        <div class="card flex column">
+          <!-- <div class="img">
+            privacy<br />
+            policy
+          </div> -->
+          <img src="./images/PrivacyPolicy.svg" class="med" alt="" />
+          <h2>
+            Privacy<br />
+            Policy
+          </h2>
+          <p>
+            Learn about how we keep your connection secure with HTTPS, and don't
+            use your data!
+          </p>
+          <a href="./about-us/privacy-policy.html">Read more</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="flex column">
+      <div class="footer-contents flex row wrap">
+        <div class="flex column box">
+          <h2>External Links</h2>
+          <a
+            href="https://github.com/heatmyhome-ninja"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a
+            href="https://sdgs.un.org/goals"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UN Developement Goals</a
+          >
+          <a
+            href="https://zerotracker.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Net-Zero Tracker</a
+          >
+        </div>
+        <div class="flex column box">
+          <img src="./images/logo3.svg" />
+        </div>
+        <div class="flex column box">
+          <h2>Contact Us</h2>
+          <a
+            href="mailto:heatmyhome.ninja@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >heatmyhome.ninja@gmail.com</a
+          >
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >School of Engineering</a
+          >
+          <a
+            href="https://warwick.ac.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            >University of Warwick</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggle_nav_menu() {
+        console.log("toggle nav menu");
+        let menu = document.getElementById("nav-menu");
+        let toggle = document.getElementById("nav-toggle");
+        if (menu.classList.contains("open")) {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.remove("open");
+            div.classList.add("close");
+          }
+          menu.classList.remove("open");
+          menu.classList.add("close");
+          toggle.classList.remove("open");
+        } else {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.add("open");
+            div.classList.remove("close");
+          }
+          menu.classList.add("open");
+          menu.classList.remove("close");
+          toggle.classList.add("open");
+        }
+      }
+
+      document
+        .getElementById("nav-menu")
+        .getElementsByTagName("a")[1]
+        .classList.add("showing");
+    </script>
+  </body>
+</html>

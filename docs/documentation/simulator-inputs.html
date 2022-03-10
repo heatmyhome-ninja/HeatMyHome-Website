@@ -1,0 +1,379 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.svg" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./documentation.css" />
+    <title>HeatMyHome | Documentation</title>
+  </head>
+  <body>
+    <nav class="flex">
+      <div class="max-width flex row">
+        <div>
+          <a href="../">
+            <img src="../images/logo3.svg" alt="HeatMyHome" />
+          </a>
+        </div>
+        <div class="title">HeatMyHome</div>
+        <div class="mobile title">Documentation</div>
+        <div id="nav-menu" class="flex row">
+          <a class="text" href="../">Home</a>
+          <a class="text" href="../about-us.html">About Us</a>
+          <a class="text" href="../education.html">Education</a>
+          <a class="text" href="../documentation.html">Documentation</a>
+          <a href="../simulate.html" class="button">Simulate</a>
+        </div>
+        <div id="nav-toggle" class="flex" onclick="toggle_nav_menu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-buffer"></div>
+    <main class="flex column hfull">
+      <img
+        id="edu-bg-img"
+        class="left"
+        src="../images/blob-light-blue.svg"
+        alt=""
+      />
+      <div class="max-width flex column">
+        <section class="education-introduction flex">
+          <div class="flex column">
+            <h1>Simulator Input Parameters</h1>
+            <p>Click on one of the inputs below to learn more about it.</p>
+          </div>
+        </section>
+        <section class="education-options flex row wrap">
+          <div class="heat-option grow" onclick="show_education_slide(0);">
+            <!-- <div class="img">postcode</div> -->
+            <h2>Postcode</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(1);">
+            <!-- <div class="img">address</div> -->
+            <h2>Address</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(2);">
+            <!-- <div class="img">temp</div> -->
+            <h2>Thermostat<br />Temperature</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(3);">
+            <!-- <div class="img">floor area</div> -->
+            <h2>Floor<br />Area</h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(4);">
+            <!-- <div class="img">epc</div> -->
+            <h2>
+              EPC Space<br />
+              Heating
+            </h2>
+          </div>
+          <div class="heat-option" onclick="show_education_slide(5);">
+            <!-- <div class="img">tes</div> -->
+            <h2>
+              Thermal <br />
+              Storage Size
+            </h2>
+          </div>
+          <div id="scroll-location"></div>
+        </section>
+
+        <div class="flex">
+          <section id="education-slides" class="foreground">
+            <div class="">
+              <h1>Postcode</h1>
+              <p>
+                Your Postcode is needed to find the solar and temperature data
+                for your area.
+              </p>
+              <p>
+                If you are located in an area with below UK average yearly
+                temperatures and solar irradiance (sunlight) the heating
+                appliances will require more energy to heat your home, and the
+                photovoltaic panels will generate less energy per unit area.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Address</h1>
+              <p>
+                Your address is needed to allow us to automatically find your
+                home's floor area and yearly space heating energy usage, which
+                can be found on your home's Energy Performance Certificate
+                (EPC).
+              </p>
+              <p>
+                This can be found automatically only if you live in England,
+                Wales or Northern Ireland. To find your Energy Performance
+                Certificate manually (required for addresses located in
+                Scotland) check out the
+                <a href="https://www.gov.uk/find-energy-certificate"
+                  >UK government website</a
+                >.
+              </p>
+              <p>
+                In the case your home's EPC does not contain either a floor area
+                or space heating estimate you can either enter it manually or
+                select a neighbour's address whose home is of similar size to
+                your and has similar heating requirements.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Thermostat Temperature</h1>
+              <p>
+                The temperature which you like your home at, in degrees Celcius,
+                is used when simulating heating technologies for your home.
+              </p>
+              <p>
+                Setting a higher thermostat temperature will require more
+                energy, resulting in higher estimates for operational
+                expenditure and emissions.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Floor Area</h1>
+              <section>
+                Your floor area, in units of meters squared, is used to estimate
+                several factors about your home including:
+                <ol>
+                  <li>
+                    The maximum number of solar panels and/or solar thermal
+                    collectors your roof could support.
+                  </li>
+                  <li>
+                    The amount of air in your home which has to be heating to
+                    your desired thermostat temperature.
+                  </li>
+                </ol>
+              </section>
+              <p>
+                Don't worry if you don't know your homes floor area, we
+                automatically find it for you when you enter your address. Click
+                <a
+                  href="https://find-energy-certificate.service.gov.uk/energy-certificate/8721-6928-6310-0264-7996#:~:text=Ground%2Dfloor%20flat-,Total%20floor%20area,-60%20square%20metres"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >here</a
+                >
+                to be taken to an example EPC page which contains the floor area
+                of a property.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>EPC Space Heating</h1>
+              <p>
+                An Energy Performance Certificate tells you on a scale of A-G,
+                the energy efficiency of your home. They were introduced in 2007
+                as a legal requirement for any building sold, let or constructed
+                and are valid for 10 years. To find your home's Energy
+                Performance Certificate check out the
+                <a
+                  href="https://www.gov.uk/find-energy-certificate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >UK government website</a
+                >. The most efficient homes are in band A, but the average UK
+                home is between band D-E. Find out more information
+                <a
+                  href="https://www.elmhurstenergy.co.uk/help-support/what-is-an-epc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >here</a
+                >.
+              </p>
+              <p>
+                An Energy Performance Certificate provides a Space Heating
+                value, which is an estimate of how much energy is requires to
+                heat your home. We use this value to simulate heating your home.
+                Click
+                <a
+                  href="https://find-energy-certificate.service.gov.uk/energy-certificate/8721-6928-6310-0264-7996#:~:text=heat%20this%20property-,Space%20heating,-4199%20kWh%20per"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >here</a
+                >
+                to be taken to an example EPC page, where the space heating
+                value is located.
+              </p>
+
+              <p>
+                If your home has a low efficiency, below rating D, it is
+                strongly recommended to improve this before considering changing
+                to a low-carbon heating technology. Your Energy Performance
+                Certificate even provides specific recommendations on how you
+                can improve your home's energy efficiency, the cost of those
+                improvements and how much it could save you on your energy bill.
+              </p>
+            </div>
+            <div class="hide">
+              <h1>Thermal Energy Storage Size</h1>
+              <p>
+                Thermal Energy Storage (TES) simply refers to your hot water
+                tank. Other methods of storing thermal energy do exist, but a
+                hot water tank is the most common option and is the one used for
+                simulations.
+              </p>
+              <p>
+                A larger TES volume, in units of meters cubed, allows your
+                heating system to prepare hot water in advance. This is
+                beneficial as it allows your heating system to heat the hot
+                water tank at off-peak electricity times (often overnight),
+                rather than heat water on demand, which is often at peak times,
+                when electricity costs are highest.
+              </p>
+              <p>
+                The cost of electricity during peak and off-peak times depends
+                on the type of tariff you have. This is why we simute 5
+                different electricity tariffs and tell you the best tariff for
+                each heating system.
+              </p>
+            </div>
+          </section>
+        </div>
+        <div class="nav-group flex row wrap">
+          <a href="../documentation/simulator-how-it-works.html">
+            <div class="mini-card">
+              <img src="../images/HowitWorks1.svg" alt="" />
+              <p>How It Works</p>
+            </div>
+          </a>
+          <a href="../documentation/simulator-outputs.html">
+            <div class="mini-card">
+              <img src="../images/SimOutput1.svg" alt="" />
+              <p>Simulator Outputs</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="flex column">
+      <div class="footer-contents flex row wrap">
+        <div class="flex column box">
+          <h2>External Links</h2>
+          <a
+            href="https://github.com/heatmyhome-ninja"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a
+            href="https://sdgs.un.org/goals"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UN Developement Goals</a
+          >
+          <a
+            href="https://zerotracker.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Net-Zero Tracker</a
+          >
+        </div>
+        <div class="flex column box">
+          <img src="../images/logo3.svg" />
+        </div>
+        <div class="flex column box">
+          <h2>Contact Us</h2>
+          <a
+            href="mailto:heatmyhome.ninja@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >heatmyhome.ninja@gmail.com</a
+          >
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >School of Engineering</a
+          >
+          <a
+            href="https://warwick.ac.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            >University of Warwick</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      function toggle_nav_menu() {
+        console.log("toggle nav menu");
+        let menu = document.getElementById("nav-menu");
+        let toggle = document.getElementById("nav-toggle");
+        if (menu.classList.contains("open")) {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.remove("open");
+            div.classList.add("close");
+          }
+          menu.classList.remove("open");
+          menu.classList.add("close");
+          toggle.classList.remove("open");
+        } else {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.add("open");
+            div.classList.remove("close");
+          }
+          menu.classList.add("open");
+          menu.classList.remove("close");
+          toggle.classList.add("open");
+        }
+      }
+
+      const heat_options = [
+        "#postcode",
+        "#address",
+        "#thermostat-temperature",
+        "#floor-area",
+        "#epc-space-heating",
+        "#thermal-storage-size",
+      ];
+
+      let slide_id = 0;
+      function show_education_slide(new_slide_id) {
+        let slides = document
+          .getElementById("education-slides")
+          .getElementsByTagName("div");
+        slides[slide_id].classList.add("hide");
+        slides[new_slide_id].classList.remove("hide");
+
+        let fields = slides[new_slide_id].children;
+        for (let field of fields) {
+          field.classList.remove("fadein");
+          field.classList.add("fadein");
+        }
+
+        document
+          .getElementsByClassName("education-options")[0]
+          .getElementsByClassName("heat-option")
+          [slide_id].classList.remove("grow");
+        document
+          .getElementsByClassName("education-options")[0]
+          .getElementsByClassName("heat-option")
+          [new_slide_id].classList.add("grow");
+
+        document.getElementById("scroll-location").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "start",
+        });
+
+        window.location.hash = heat_options[new_slide_id];
+        slide_id = new_slide_id;
+      }
+
+      let heat_index = heat_options.indexOf(window.location.hash);
+      console.log("Hash: ", window.location.hash, "index: ", heat_index);
+      if (heat_index > -1) {
+        show_education_slide(heat_index);
+      }
+
+      document
+        .getElementById("nav-menu")
+        .getElementsByTagName("a")[3]
+        .classList.add("showing");
+    </script>
+  </body>
+</html>
