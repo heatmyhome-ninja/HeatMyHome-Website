@@ -834,9 +834,9 @@ async function get_epc_data() {
     catch (error) {
         console.error('epc-certificate-json-error: ', error);
         if (error.message == "Failed to fetch") {
-            unhide_elements(['warn-address-connection']);
+            unhide_ids(['warn-address-connection']);
         } else {
-            unhide_elements(['warn-address-unknown']);
+            unhide_ids(['warn-address-unknown']);
         }
     }
 }
