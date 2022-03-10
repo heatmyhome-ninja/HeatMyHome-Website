@@ -1,0 +1,194 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.svg" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="index.css" />
+    <title>HeatMyHome</title>
+  </head>
+  <body>
+    <nav class="flex">
+      <div class="max-width flex row">
+        <div>
+          <a href="./">
+            <img src="./images/logo3.svg" alt="HeatMyHome" />
+          </a>
+        </div>
+        <div class="title">HeatMyHome</div>
+        <div class="mobile title">HeatMyHome</div>
+        <div id="nav-menu" class="flex row">
+          <a class="text" href="./">Home</a>
+          <a class="text" href="./about-us.html">About Us</a>
+          <a class="text" href="./education.html">Education</a>
+          <a class="text" href="./documentation.html">Documentation</a>
+          <a href="./simulate.html" class="button">Simulate</a>
+        </div>
+        <div id="nav-toggle" class="flex" onclick="toggle_nav_menu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-buffer"></div>
+    <main class="flex column">
+      <img
+        id="edu-bg-img"
+        src="./images/background_clip_double2_low_res.png"
+        alt=""
+      />
+      <section id="home-discover" class="flex column">
+        <div></div>
+        <div class="flex mobile-col jcentre">
+          <div class="info-box flex column">
+            <h2>HeatMyHome</h2>
+            <p>
+              Find out if you can save money and positively impact the
+              environment by using our domestic heating simulator. Simply enter
+              details about your home to be provided with several customised
+              heating solutions. Click below to get started!
+            </p>
+            <a href="./simulate.html" class="button"> Find your solution </a>
+          </div>
+          <!-- <img id="home-img2" src="./images/homepage_house.svg" /> -->
+          <div id="home-img"></div>
+        </div>
+        <div class="divider-group">
+          <h3>Learn More</h3>
+          <div class="divider"></div>
+        </div>
+      </section>
+
+      <section id="home-our-cards" class="flex column">
+        <!-- <img id="card-bg-img" src="./images/blob-scene-haikei.svg" alt="" /> -->
+        <div class="card-group flex row wrap">
+          <div class="card flex column">
+            <!-- <div class="img">About Us</div> -->
+            <img src="./images/AboutUsIcon.svg" alt="" />
+            <h2>About Us</h2>
+            <p>
+              Learn about why we developed this website, our team and privacy
+              policy.
+            </p>
+            <a href="./about-us.html">Read more</a>
+          </div>
+          <div class="card flex column">
+            <!-- <div class="img">Education</div> -->
+            <img src="./images/EducationIcon.svg" alt="" />
+            <h2>Education</h2>
+            <p>
+              Learn about the various heating and solar technologies we
+              simulate, as well as the benefits of switching to a low-carbon
+              heating system.
+            </p>
+            <a href="./education.html">Read more</a>
+          </div>
+          <div class="card flex column">
+            <!-- <div class="img">Documentation</div> -->
+            <img src="./images/DocumentationIcon.svg" alt="" />
+            <h2>Documentation</h2>
+            <p>
+              Learn about the inputs and outputs of the simulator, along with
+              how it works to determine the optimal heating system for your
+              home.
+            </p>
+            <a href="./documentation.html">Read more</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="flex column relpos">
+      <div class="footer-contents flex row wrap">
+        <div class="flex column box">
+          <h2>External Links</h2>
+          <a
+            href="https://github.com/heatmyhome-ninja"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a
+            href="https://sdgs.un.org/goals"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UN Developement Goals</a
+          >
+          <a
+            href="https://zerotracker.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Net-Zero Tracker</a
+          >
+        </div>
+        <div class="flex column box">
+          <img src="./images/logo3.svg" />
+        </div>
+        <div class="flex column box">
+          <h2>Contact Us</h2>
+          <a
+            href="mailto:heatmyhome.ninja@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >heatmyhome.ninja@gmail.com</a
+          >
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >School of Engineering</a
+          >
+          <a
+            href="https://warwick.ac.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            >University of Warwick</a
+          >
+        </div>
+      </div>
+      <p id="version">version 0.53</p>
+    </footer>
+
+    <script>
+      function toggle_nav_menu() {
+        console.log("toggle nav menu");
+        let menu = document.getElementById("nav-menu");
+        let toggle = document.getElementById("nav-toggle");
+        if (menu.classList.contains("open")) {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.remove("open");
+            div.classList.add("close");
+          }
+          menu.classList.remove("open");
+          menu.classList.add("close");
+          toggle.classList.remove("open");
+        } else {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.add("open");
+            div.classList.remove("close");
+          }
+          menu.classList.add("open");
+          menu.classList.remove("close");
+          toggle.classList.add("open");
+        }
+      }
+
+      document
+        .getElementById("nav-menu")
+        .getElementsByTagName("a")[0]
+        .classList.add("showing");
+
+      let animation = bodymovin.loadAnimation({
+        // animationData: { /* ... */ },
+        container: document.getElementById("home-img"), // required
+        path: "./images/house_animation.json", // required
+        renderer: "svg", // required
+        loop: true, // optional
+        autoplay: true, // optional
+        name: "Demo Animation", // optional
+      });
+    </script>
+  </body>
+</html>
