@@ -1,0 +1,191 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <title>HeatMyHome | Education</title>
+  </head>
+  <body>
+    <nav class="flex">
+      <div class="max-width flex row">
+        <div>
+          <a href="./">
+            <img src="./images/logo3.svg" alt="HeatMyHome" />
+          </a>
+        </div>
+        <div class="title">HeatMyHome</div>
+        <div class="mobile title">Education</div>
+        <div id="nav-menu" class="flex row">
+          <a class="text" href="./">Home</a>
+          <a class="text" href="./about-us.html">About Us</a>
+          <a class="text" href="./education.html">Education</a>
+          <a class="text" href="./documentation.html">Documentation</a>
+          <a href="./simulate.html" class="button">Simulate</a>
+        </div>
+        <div id="nav-toggle" class="flex" onclick="toggle_nav_menu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-buffer"></div>
+    <main class="flex education-main">
+      <img id="edu-bg-img" class="left" src="./images/education1.svg" alt="" />
+      <div class="max-width flex row wrap">
+        <div class="card flex column">
+          <img src="./images/HeatingTech.svg" class="med" alt="" />
+          <!-- <div class="img">heat tech</div> -->
+          <h2>
+            Heating<br />
+            Technologies
+          </h2>
+          <p>
+            Learn about the various low carbon heating technologies that could
+            heat your home.
+          </p>
+          <a href="./education/heating-technologies.html">Read more</a>
+        </div>
+        <div class="card flex column">
+          <!-- <div class="img">solar tech</div> -->
+          <img src="./images/SolarTech.svg" class="med" alt="" />
+          <h2>
+            Solar<br />
+            Technologies
+          </h2>
+          <p>
+            Learn about the various solar thermal and photovoltaic technologies
+            that could supplement your heating system.
+          </p>
+          <a href="./education/solar-technologies.html">Read more</a>
+        </div>
+        <div class="card flex column">
+          <!-- <div class="img">why switch</div> -->
+          <img src="./images/WhySwitch.svg" class="med" alt="" />
+          <h2>
+            Why<br />
+            Switch?
+          </h2>
+          <p>
+            Learn why switching to a low-carbon heating technology could be
+            beneficial to you and the planet!
+          </p>
+          <a href="./education/why-switch.html">Read more</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="flex column">
+      <div class="footer-contents flex row wrap">
+        <div class="flex column box">
+          <h2>External Links</h2>
+          <a
+            href="https://github.com/heatmyhome-ninja"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a
+            href="https://sdgs.un.org/goals"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UN Developement Goals</a
+          >
+          <a
+            href="https://zerotracker.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Net-Zero Tracker</a
+          >
+        </div>
+        <div class="flex column box">
+          <img src="./images/logo3.svg" />
+        </div>
+        <div class="flex column box">
+          <h2>Contact Us</h2>
+          <a
+            href="mailto:heatmyhome.ninja@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >heatmyhome.ninja@gmail.com</a
+          >
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >School of Engineering</a
+          >
+          <a
+            href="https://warwick.ac.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            >University of Warwick</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggle_nav_menu() {
+        console.log("toggle nav menu");
+        let menu = document.getElementById("nav-menu");
+        let toggle = document.getElementById("nav-toggle");
+        if (menu.classList.contains("open")) {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.remove("open");
+            div.classList.add("close");
+          }
+          menu.classList.remove("open");
+          menu.classList.add("close");
+          toggle.classList.remove("open");
+        } else {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.add("open");
+            div.classList.remove("close");
+          }
+          menu.classList.add("open");
+          menu.classList.remove("close");
+          toggle.classList.add("open");
+        }
+      }
+
+      document
+        .getElementById("nav-menu")
+        .getElementsByTagName("a")[2]
+        .classList.add("showing");
+
+      // let element = document.getElementsByClassName("education-main")[0];
+      // let bg_img = document.getElementById("edu-bg-img");
+      // let main_height = element.offsetHeight;
+      // function reportWindowSize() {
+      //   if (element.offsetHeight != main_height) {
+      //     main_height = element.offsetHeight;
+      //     console.log(element.offsetHeight);
+      //     bg_img.style.height = main_height;
+      //   }
+      // }
+      // window.onresize = reportWindowSize;
+
+      // let offset = element.getBoundingClientRect().top;
+      // window.addEventListener("scroll", () => {
+      //   let aa = `translateX(${Math.min(
+      //     -40,
+      //     Math.max(
+      //       -60,
+      //       Math.abs(element.getBoundingClientRect().top - offset) / 5 - 60
+      //     )
+      //   )}%)`;
+      //   console.log(
+      //     window.scrollY,
+      //     document.body.offsetHeight,
+      //     element.getBoundingClientRect().top,
+      //     element.getBoundingClientRect().bottom,
+      //     aa
+      //   );
+      //   bg_img.style.transform = aa;
+      // });
+    </script>
+  </body>
+</html>

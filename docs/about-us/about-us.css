@@ -1,0 +1,15 @@
+main {
+  min-height: calc(100% - 4rem);
+  justify-content: center;
+  position: relative;
+}
+
+section {
+  box-sizing: border-box;
+  border: 2px solid #024557;
+  margin: 1rem;
+  padding: 1rem;
+  width: min(50rem, 80%);
+  min-height: 20rem;
+  background-color: rgba(255, 255, 255, 0.5);
+}

@@ -1,0 +1,203 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.svg" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./about-us.css" />
+    <title>HeatMyHome | About Us</title>
+  </head>
+  <body>
+    <nav class="flex">
+      <div class="max-width flex row">
+        <div>
+          <a href="../">
+            <img src="../images/logo3.svg" alt="HeatMyHome" />
+          </a>
+        </div>
+        <div class="title">HeatMyHome</div>
+        <div class="mobile title">About Us</div>
+        <div id="nav-menu" class="flex row">
+          <a class="text" href="../">Home</a>
+          <a class="text" href="../about-us.html">About Us</a>
+          <a class="text" href="../education.html">Education</a>
+          <a class="text" href="../documentation.html">Documentation</a>
+          <a href="../simulate.html" class="button">Simulate</a>
+        </div>
+        <div id="nav-toggle" class="flex" onclick="toggle_nav_menu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-buffer"></div>
+    <main class="flex column">
+      <img id="edu-bg-img" src="../images/blob-light-blue.svg" alt="" />
+      <h1>Our Team</h1>
+      <section class="flexcentre">
+        <p>
+          HeatMyHome is a
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >University of Warwick</a
+          >
+          Engineering Master's project developed by
+          <a
+            href="https://github.com/Jackrekirby"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Jack Kirby</a
+          >,
+          <a
+            href="https://www.linkedin.com/in/aaron-hickman-a063941b8/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Aaron Hickman</a
+          >,
+          <a
+            href="https://www.linkedin.com/in/linakha/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Lina Khalil</a
+          >,
+          <a
+            href="https://www.linkedin.com/in/tudor-sucala-771ab9198/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Tudor Sucala</a
+          >, and
+          <a
+            href="https://www.linkedin.com/in/saahil-dhand-017bb1179/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Saahil Dhand</a
+          >.
+        </p>
+        <p>
+          The aim of the project was to develop upon a heating simulation model
+          created by
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/people/wei_he/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Dr Wei He</a
+          >
+          and
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/research/grouplist/electricalpower/pcsr/people/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Micheal Ryland</a
+          >
+          and make it available to the public.
+        </p>
+        <p>
+          If you have any questions, please contact us at
+          <a
+            href="mailto:heatmyhome.ninja@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >heatmyhome.ninja@gmail.com</a
+          >.
+        </p>
+      </section>
+      <div class="nav-group flex row wrap">
+        <a href="../about-us/motivation.html">
+          <div class="mini-card">
+            <img src="../images/Motivation1.svg" alt="" />
+            <p>Motivation</p>
+          </div>
+        </a>
+        <a href="../about-us/privacy-policy.html">
+          <div class="mini-card">
+            <img src="../images/PrivacyPolicy1.svg" alt="" />
+            <p>Privacy Policy</p>
+          </div>
+        </a>
+      </div>
+    </main>
+    <footer class="flex column">
+      <div class="footer-contents flex row wrap">
+        <div class="flex column box">
+          <h2>External Links</h2>
+          <a
+            href="https://github.com/heatmyhome-ninja"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a
+            href="https://sdgs.un.org/goals"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UN Developement Goals</a
+          >
+          <a
+            href="https://zerotracker.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Net-Zero Tracker</a
+          >
+        </div>
+        <div class="flex column box">
+          <img src="../images/logo3.svg" />
+        </div>
+        <div class="flex column box">
+          <h2>Contact Us</h2>
+          <a
+            href="mailto:heatmyhome.ninja@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >heatmyhome.ninja@gmail.com</a
+          >
+          <a
+            href="https://warwick.ac.uk/fac/sci/eng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >School of Engineering</a
+          >
+          <a
+            href="https://warwick.ac.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            >University of Warwick</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggle_nav_menu() {
+        console.log("toggle nav menu");
+        let menu = document.getElementById("nav-menu");
+        let toggle = document.getElementById("nav-toggle");
+        if (menu.classList.contains("open")) {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.remove("open");
+            div.classList.add("close");
+          }
+          menu.classList.remove("open");
+          menu.classList.add("close");
+          toggle.classList.remove("open");
+        } else {
+          for (let div of menu.getElementsByTagName("a")) {
+            div.classList.add("open");
+            div.classList.remove("close");
+          }
+          menu.classList.add("open");
+          menu.classList.remove("close");
+          toggle.classList.add("open");
+        }
+      }
+
+      document
+        .getElementById("nav-menu")
+        .getElementsByTagName("a")[1]
+        .classList.add("showing");
+    </script>
+  </body>
+</html>
