@@ -312,6 +312,7 @@ async function onchange_address() {
             hide_elements([warn_element, epc_box_element, floor_area_box_element]);
             unhide_elements([searching]);
             await get_epc_data();
+            hide_elements([searching]);
     }
     update_epc_urls();
 }
@@ -339,6 +340,7 @@ async function onchange_neighbours_address() {
             hide_elements([epc_box_element, floor_area_box_element]);
             unhide_elements([searching]);
             await get_neighbour_epc_data();
+            hide_elements([searching]);
     }
     update_neighbours_epc_urls();
 }
