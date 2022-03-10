@@ -24,7 +24,7 @@ www.heatmyhome.ninja is a web tool to allow consumers to simulate their home's h
     - [Folder Guide](#folder-guide)
     - [Website UI](#website-ui)
     - [API Server](#api--server)
-
+- [Credits](#credits)
 # Technologies Simulated
 
 ### Primary Heaters
@@ -265,3 +265,9 @@ The API is currently unavailable for public use due to limited compute hours.
 However the code is publicly available if you wish to view it or host the server yourself.
 
 For further information please see the API specific [repository](https://github.com/heatmyhome-ninja/epc-api). 
+
+# Credits
+Credit to Vecteezy for the following Vector Graphics: [Tree](https://www.vecteezy.com/free-vector/tree"), [Nature](https://www.vecteezy.com/free-vector/nature) and [Human](https://www.vecteezy.com/free-vector/human). 
+We wish to thank credit Dr Wei He and Micheal Ryland for developing the  heating simulation model.
+HeatMyHome is a University of Warwick Engineering Master's project developed by Jack Kirby, Aaron Hickman, Lina Khalil, Tudor Sucala, and Saahil Dhand.
+If you have any questions, please contact us at heatmyhome.ninja@gmail.com.
